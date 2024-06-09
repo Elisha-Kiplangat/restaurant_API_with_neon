@@ -1,0 +1,380 @@
+
+GET http://localhost:8000/
+
+###
+
+#---- Restaurant---#
+###
+GET http://localhost:8000/restaurants
+
+###
+POST http://localhost:8000/restaurants
+Content-Type: application/json
+
+{
+    "name": "example",
+    "address": "Kutus",
+    "zip": "10100",
+    "cityId": "Nyeri",
+    "createdAt": "2024-06-06",
+    "updatedAt": "2024-06-06"
+}
+###
+PUT http://localhost:8000/restaurants/8
+Content-Type: application/json
+
+{
+    "name": "Hillton"
+}
+###
+DELETE http://localhost:8000/restaurants/7
+
+#---- Users---#
+###
+GET http://localhost:8000/users
+
+###
+POST http://localhost:8000/users
+Content-Type: application/json
+
+{
+    "email": "example@gmail.com",
+    "password": "example",
+    "firstName": "John",
+    "lastName": "Doe",
+    "phone": "+25471521254",
+    "createdAt": "2024-06-06",
+    "updatedAt": "2024-06-06"
+}
+###
+PUT http://localhost:8000/users/8
+Content-Type: application/json
+
+{
+    "firstName": "Alexa"
+}
+###
+DELETE http://localhost:8000/users/7
+
+#---- Orders---#
+###
+GET http://localhost:8000/orders
+
+###
+
+POST http://localhost:8000/orders
+Content-Type: application/json
+
+{
+    "restaurantId": "3",
+    "estimatesDeliveryTime": "2024-06-06",
+    "actualDeliveryTime": "2024-06-06",
+    "deliveryAddressId": "Kutus",
+    "userId": 3,
+    "driverId": 2,
+    "price": 1000,
+    "discount": 250,
+    "finalPrice": 750,
+    "comment": "great deal",
+    "createdAt": "2024-06-06",
+    "updatedAt": "2024-06-06"
+}
+
+###
+PUT http://localhost:8000/orders/1
+Content-Type: application/json
+
+{
+    "price": "1200"
+}
+###
+DELETE http://localhost:8000/orders/1
+
+#---- States---#
+###
+GET http://localhost:8000/states
+
+###
+
+POST http://localhost:8000/states
+Content-Type: application/json
+
+{
+    "name": "Kisumu",
+    "code": "20100"
+}
+
+###
+PUT http://localhost:8000/states/1
+Content-Type: application/json
+
+{
+    "name": "Nakuru"
+}
+###
+DELETE http://localhost:8000/states/1
+
+#---- Menu item---#
+###
+GET http://localhost:8000/menu-items
+
+###
+
+POST http://localhost:8000/menu-items
+Content-Type: application/json
+
+{
+    "name": "pizza",
+    "restaurant_id": 2,
+    "category_id": 1,
+    "description": "medium size pizza",
+    "ingredients": "flour, cheese, tomato",
+    "price": 1000,
+    "active": true,
+    "createdAt": "2024-06-06",
+    "updatedAt": "2024-06-06"
+}
+
+###
+PUT http://localhost:8000/menu-items/5
+Content-Type: application/json
+
+{
+    "name": "pizza",
+    "description": "medium size pizza",
+    "ingredients": "flour, cheese, tomato",
+    "price": 1000
+}
+###
+DELETE http://localhost:8000/menu-items/1
+
+#---- Category---#
+###
+GET http://localhost:8000/categories 
+###
+
+POST http://localhost:8000/categories
+Content-Type: application/json
+
+{
+    "name": "snacks"
+}
+
+###
+PUT http://localhost:8000/categories/1
+Content-Type: application/json
+
+{
+    "name": "soft drinks"
+}
+###
+DELETE http://localhost:8000/categories/1
+
+#---- Comments---#
+###
+GET http://localhost:8000/comments
+
+###
+
+POST http://localhost:8000/comments
+Content-Type: application/json
+
+{
+    "orderId": 1,
+    "userId": 2,
+    "commentText": "Great",
+    "isComplaint": true,
+    "isPraise": false,
+    "createdAt": "2024-06-06",
+    "updatedAt": "2024-06-06"
+}
+###
+PUT http://localhost:8000/comments/1
+Content-Type: application/json
+
+{
+    "commentsText": "Good"
+}
+###
+DELETE http://localhost:8000/comments/1
+
+#---- Address---#
+###
+GET http://localhost:8000/addresses
+
+###
+
+POST http://localhost:8000/addresses
+Content-Type: application/json
+
+{
+    "streetAddress1": 1,
+    "streetAddress2": 2,
+    "zipCode": 20210,
+    "deliveryInstructions": "free",
+    "userId": 2,
+    "cityId": 3,
+    "createdAt": "2024-06-06",
+    "updatedAt": "2024-06-06"
+}
+
+###
+PUT http://localhost:8000/addresses/1
+Content-Type: application/json
+
+{
+    "fullname": "Alexa"
+}
+###
+DELETE http://localhost:8000/addresses/1
+
+#---- City---#
+###
+GET http://localhost:8000/cities 
+###
+
+POST http://localhost:8000/cities
+Content-Type: application/json
+
+{
+    "name": "Nakuru",
+    "stateId": 2
+}
+
+###
+PUT http://localhost:8000/cities/4
+Content-Type: application/json
+
+{
+    "name": "Nairobi"
+}
+###
+DELETE http://localhost:8000/cities/5
+
+#---- Order menu item---#
+###
+GET http://localhost:8000/order-menu-items 
+###
+
+POST http://localhost:8000/order-menu-items
+Content-Type: application/json
+
+{
+    "order_id": 5,
+    "menu_item_id": 5,
+    "quantity": 5,
+    "itemPrice": 1000,
+    "price": 2000,
+    "comment": "great deal"
+}
+
+###
+PUT http://localhost:8000/order-menu-items/4
+Content-Type: application/json
+
+{
+    "quantity": 3,
+    "price": 3000
+}
+###
+DELETE http://localhost:8000/order-menu-items/5
+
+#---- Status catalog---#
+###
+GET http://localhost:8000/status-catalogs 
+###
+
+POST http://localhost:8000/status-catalogs
+Content-Type: application/json
+
+{
+    "name": "Pending"
+}
+
+###
+PUT http://localhost:8000/status-catalogs/1
+Content-Type: application/json
+
+{
+    "name": "Delivered"
+}
+###
+DELETE http://localhost:8000/status-catalogs/2
+
+#---- driver---#
+###
+GET http://localhost:8000/drivers 
+###
+
+POST http://localhost:8000/drivers
+Content-Type: application/json
+
+{
+    "carMake": "Toyota",
+    "carModel": "Vitz",
+    "carYear": 2010,
+    "userId": 2,
+    "online": true,
+    "delivering": true,
+    "createdAt": "2024-06-06",
+    "updatedAt": "2024-06-06"
+}
+
+###
+PUT http://localhost:8000/drivers/5
+Content-Type: application/json
+
+{
+    "online": false,
+    "delivering": false
+}
+###
+DELETE http://localhost:8000/drivers/5
+
+#---- Restaurant owner---#
+###
+GET http://localhost:8000/restaurant-owners 
+###
+
+POST http://localhost:8000/restaurant-owners
+Content-Type: application/json
+
+{
+    "restaurantId": 2,
+    "ownerId": 2
+}
+
+###
+PUT http://localhost:8000/restaurant-owners/5
+Content-Type: application/json
+
+{
+    "ownerId": 3
+}
+###
+DELETE http://localhost:8000/restaurant-owners/2
+
+#---- Order status---#
+###
+GET http://localhost:8000/order-status 
+###
+
+POST http://localhost:8000/order-status
+Content-Type: application/json
+
+{
+    "orderId": 5,
+    "statusCatalogId": 1,
+    "createdAt": "2024-06-08"
+}
+
+###
+PUT http://localhost:8000/order-status/2
+Content-Type: application/json
+
+{
+    "createdAt": "2024-06-07"
+}
+###
+DELETE http://localhost:8000/order-status/2
+
