@@ -1,3 +1,4 @@
+import 'dotenv/config';
 
 GET http://localhost:8000/
 
@@ -80,6 +81,10 @@ Content-Type: application/json
     "email": "john@gmail.com",
     "password": "password"
 }
+
+###
+GET http://localhost:8000/users
+Authorization: process.env.TOKEN
 
 #---- Orders---#
 ###
