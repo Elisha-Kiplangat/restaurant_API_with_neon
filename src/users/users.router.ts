@@ -2,13 +2,14 @@ import {Hono} from 'hono'
 import {userController, oneUserController, addUserController, updateUserController, deleteUserController} from './users.controller'
 import { zValidator } from "@hono/zod-validator";
 import { userSchema } from "../validator";
+import { adminRoleAuth, userRoleAuth } from "../middleware/bearAuth";
 
 export const userRouter = new Hono();
 
-userRouter.get('users', userController);
+userRouter.get('/users', adminRoleAuth, userController);
 
 //one user
-userRouter.get("/users/:id", oneUserController)
+userRouter.get("/users/:id", userRoleAuth, oneUserController)
 
 //add user
 
