@@ -1,4 +1,4 @@
-import { pgTable, text, varchar, serial, boolean, real, date, primaryKey, integer } from 'drizzle-orm/pg-core';
+import { pgTable, text, varchar, serial, boolean, real, date, primaryKey, integer, pgEnum } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 import { datetime } from 'drizzle-orm/mysql-core';
 
@@ -140,6 +140,10 @@ export const restaurantOwnerTable = pgTable("restaurant_owner", {
     
 })
 
+// ROLE 
+
+export const roleEnum = pgEnum("role", ["admin", "user", "driver", "owner"]);
+
 //User table
 
 export const userTable = pgTable("users", {
@@ -151,6 +155,7 @@ export const userTable = pgTable("users", {
     phone: varchar("phone", { length: 255 }).notNull(),
     createdAt: date("created_at").notNull(),
     updatedAt: date("updated_at").notNull(),
+    role: roleEnum("role").default("user")
     
 })
 
@@ -350,3 +355,4 @@ export type orderStatusInsert = typeof orderStatusTable.$inferInsert;
 
 export type restaurantOwnerselect = typeof restaurantOwnerTable.$inferSelect;
 export type restaurantOwnerInsert = typeof restaurantOwnerTable.$inferInsert;
+

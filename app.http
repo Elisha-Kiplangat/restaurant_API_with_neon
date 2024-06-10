@@ -14,8 +14,8 @@ Content-Type: application/json
 {
     "name": "example",
     "address": "Kutus",
-    "zip": "10100",
-    "cityId": "Nyeri",
+    "zip": 10100,
+    "cityId": 1,
     "createdAt": "2024-06-06",
     "updatedAt": "2024-06-06"
 }
@@ -55,6 +55,31 @@ Content-Type: application/json
 }
 ###
 DELETE http://localhost:8000/users/7
+
+#-------------------------- Users Register --------------------#
+###
+POST http://localhost:8000/register
+Content-Type: application/json
+
+{
+    "email": "john@gmail.com",
+    "password": "password",
+    "firstName": "John",
+    "lastName": "Doe",
+    "phone": "+25471521254",
+    "createdAt": "2024-06-10",
+    "updatedAt": "2024-06-10",
+    "role": "admin"
+}
+
+### ----------------------- Users Login -----------------------------#
+POST  http://localhost:8000/login
+Content-Type: application/json
+
+{
+    "email": "john@gmail.com",
+    "password": "password"
+}
 
 #---- Orders---#
 ###
@@ -100,8 +125,8 @@ POST http://localhost:8000/states
 Content-Type: application/json
 
 {
-    "name": "Kisumu",
-    "code": "20100"
+    "name": "Nairobi",
+    "code": "10100"
 }
 
 ###

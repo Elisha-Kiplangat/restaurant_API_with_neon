@@ -1,4 +1,5 @@
 
+import { create } from 'domain'
 import { number, z } from 'zod'
 
 
@@ -152,4 +153,26 @@ export const orderStatusSchema = z.object({
     createdAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
         message: 'Invalid date format for createdAt',
     }).transform((val) => new Date(val))
+})
+
+//login schema
+export const loginSchema = z.object({
+    email: z.string(),
+    password: z.string()
+})
+
+//register schema
+export const registerSchema = z.object({
+    email: z.string(),
+    password: z.string(),
+    firstName: z.string(),
+    lastName: z.string(),
+    phone: z.string(),
+    createdAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for createdAt',
+    }).transform((val) => new Date(val)),
+    updatedAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for updatedAt',
+    }).transform((val) => new Date(val)),
+    role: z.string().optional()
 })

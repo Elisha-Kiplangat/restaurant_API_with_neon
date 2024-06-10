@@ -15,6 +15,7 @@ import { statusCatalogRouter } from './statusCatalog/statusCatalog.router'
 import { driverRouter } from './driver/driver.router'
 import { restaurantOwnerRouter } from './restaurantOwner/restaurantOwner.router'
 import { orderStatusRouter } from './orderStatus/orderStatus.router'
+import { authRouter } from './auth/auth.router'
 
 const app = new Hono()
 
@@ -25,6 +26,8 @@ app.get('/', (c) => {
 app.route('/', restaurantRouter)
 
 app.route('/', userRouter)
+
+app.route('/', authRouter)
 
 app.route('/', ordersRouter)
 
