@@ -3,10 +3,8 @@
     "dev": "tsx watch src/index.ts",
     "start": "node ./dist/index.js",
     "build": "tsc",
-    "gen": "drizzle-kit generate",
-    "migrate": "tsx src/drizzle/migrate",
     "studio": "drizzle-kit studio",
-    "push": "drizzle-kit generate && drizzle-kit migrate"
+    "push": "drizzle-kit push"
   },
   "keywords": [],
   "author": "",
