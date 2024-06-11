@@ -2,6 +2,7 @@ import { Hono } from 'hono';
 import { zValidator } from '@hono/zod-validator';
 import { registerSchema, loginSchema } from '../validator';
 import { registerController, loginController } from './auth.controller';
+import { adminRoleAuth } from '../middleware/bearAuth';
 
 export const authRouter = new Hono();
 
@@ -24,3 +25,4 @@ authRouter.post('login', zValidator('json', loginSchema, (result, c) => {
     }
 
 }), loginController);
+

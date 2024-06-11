@@ -17,12 +17,14 @@ const statusCatalog_router_1 = require("./statusCatalog/statusCatalog.router");
 const driver_router_1 = require("./driver/driver.router");
 const restaurantOwner_router_1 = require("./restaurantOwner/restaurantOwner.router");
 const orderStatus_router_1 = require("./orderStatus/orderStatus.router");
+const auth_router_1 = require("./auth/auth.router");
 const app = new hono_1.Hono();
 app.get('/', (c) => {
     return c.text('Hello Hono!');
 });
 app.route('/', restaurant_router_1.restaurantRouter);
 app.route('/', users_router_1.userRouter);
+app.route('/', auth_router_1.authRouter);
 app.route('/', orders_router_1.ordersRouter);
 app.route('/', state_router_1.stateRouter);
 app.route('/', menuItem_router_1.menuItemRouter);

@@ -56,33 +56,7 @@ Content-Type: application/json
     "firstName": "Alexa"
 }
 ###
-DELETE http://localhost:8000/users/7
-
-#-------------------------- Users Register --------------------#
-###
-POST http://localhost:8000/register
-Content-Type: application/json
-
-{
-    "email": "john@gmail.com",
-    "password": "password",
-    "firstName": "John",
-    "lastName": "Doe",
-    "phone": "+25471521254",
-    "createdAt": "2024-06-10",
-    "updatedAt": "2024-06-10",
-    "role": "admin"
-}
-
-### ----------------------- Users Login -----------------------------#
-POST  http://localhost:8000/login
-Content-Type: application/json
-
-{
-    "email": "john@gmail.com",
-    "password": "password"
-}
-
+DELETE http://localhost:8000/users/3
 
 #---- Orders---#
 ###
@@ -405,4 +379,41 @@ Content-Type: application/json
 }
 ###
 DELETE http://localhost:8000/order-status/2
+
+
+#-------------------------- Users Register --------------------#
+###
+POST http://localhost:8000/register
+Content-Type: application/json
+
+{
+    "email": "john@gmail.com",
+    "password": "password",
+    "firstName": "John",
+    "lastName": "Doe",
+    "phone": "+25471521254",
+    "createdAt": "2024-06-10",
+    "updatedAt": "2024-06-10",
+    "role": "admin"
+}
+
+### ----------------------- Users Login -----------------------------#
+POST  http://localhost:8000/login
+Content-Type: application/json
+
+{
+    "email": "john@gmail.com",
+    "password": "password"
+}
+
+###
+GET http://localhost:8000/users
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MTEyNjc5fQ.SbmnqgX01NG_7NAD2auzKIAw0C96Zp2dHYqiFg9PRYU
+
+### ----------------------- Users delete -----------------------------#
+DELETE http://localhost:8000/delete/3
+
+###
+DELETE http://localhost:8000/users/4
+
 

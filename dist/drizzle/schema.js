@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.driverTableRelation = exports.userTableRelation = exports.statusCatalogTableRelation = exports.orderTableRelation = exports.addressTableRelation = exports.stateTableRelation = exports.cityTableRelation = exports.restaurantTableRelation = exports.categoryTableRelation = exports.menuItemTableRelation = exports.CommentTable = exports.driverTable = exports.userTable = exports.restaurantOwnerTable = exports.statusCatalogTable = exports.orderStatusTable = exports.orderTable = exports.order_menu_itemTable = exports.addressTable = exports.stateTable = exports.cityTable = exports.restaurantTable = exports.categoryTable = exports.menu_itemTable = void 0;
+exports.driverTableRelation = exports.userTableRelation = exports.statusCatalogTableRelation = exports.orderTableRelation = exports.addressTableRelation = exports.stateTableRelation = exports.cityTableRelation = exports.restaurantTableRelation = exports.categoryTableRelation = exports.menuItemTableRelation = exports.CommentTable = exports.driverTable = exports.userTable = exports.roleEnum = exports.restaurantOwnerTable = exports.statusCatalogTable = exports.orderStatusTable = exports.orderTable = exports.order_menu_itemTable = exports.addressTable = exports.stateTable = exports.cityTable = exports.restaurantTable = exports.categoryTable = exports.menu_itemTable = void 0;
 const pg_core_1 = require("drizzle-orm/pg-core");
 const drizzle_orm_1 = require("drizzle-orm");
 // Tables
@@ -100,6 +100,8 @@ exports.restaurantOwnerTable = (0, pg_core_1.pgTable)("restaurant_owner", {
     restaurantId: (0, pg_core_1.integer)("restaurant_id").notNull().references(() => exports.restaurantTable.id, { onDelete: "cascade" }),
     ownerId: (0, pg_core_1.integer)("owner_id").notNull()
 });
+// ROLE 
+exports.roleEnum = (0, pg_core_1.pgEnum)("role", ["admin", "user", "driver", "owner"]);
 //User table
 exports.userTable = (0, pg_core_1.pgTable)("users", {
     id: (0, pg_core_1.serial)("id").primaryKey(),
@@ -110,6 +112,7 @@ exports.userTable = (0, pg_core_1.pgTable)("users", {
     phone: (0, pg_core_1.varchar)("phone", { length: 255 }).notNull(),
     createdAt: (0, pg_core_1.date)("created_at").notNull(),
     updatedAt: (0, pg_core_1.date)("updated_at").notNull(),
+    role: (0, exports.roleEnum)("role").default("user")
 });
 //Driver table
 exports.driverTable = (0, pg_core_1.pgTable)("driver", {

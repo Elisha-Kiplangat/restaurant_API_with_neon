@@ -148,7 +148,7 @@ export const roleEnum = pgEnum("role", ["admin", "user", "driver", "owner"]);
 
 export const userTable = pgTable("users", {
     id: serial("id").primaryKey(),
-    email: varchar("email", { length: 255 }).notNull(),
+    email: varchar("email", { length: 255 }).notNull().unique(),
     password: varchar("password", { length: 255 }).notNull(),
     firstName: varchar("first_name", { length: 255 }).notNull(),
     lastName: varchar("last_name", { length: 255 }).notNull(),

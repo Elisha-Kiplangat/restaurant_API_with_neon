@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.orderStatusSchema = exports.restaurantOwnerSchema = exports.driverSchema = exports.statusCatalogSchema = exports.orderMenuItemSchema = exports.citySchema = exports.categorySchema = exports.menuItemSchema = exports.orderSchema = exports.restaurantSchema = exports.addressSchema = exports.commentSchema = exports.stateSchema = exports.userSchema = void 0;
+exports.registerSchema = exports.loginSchema = exports.orderStatusSchema = exports.restaurantOwnerSchema = exports.driverSchema = exports.statusCatalogSchema = exports.orderMenuItemSchema = exports.citySchema = exports.categorySchema = exports.menuItemSchema = exports.orderSchema = exports.restaurantSchema = exports.addressSchema = exports.commentSchema = exports.stateSchema = exports.userSchema = void 0;
 const zod_1 = require("zod");
 exports.userSchema = zod_1.z.object({
     email: zod_1.z.string(),
@@ -137,4 +137,24 @@ exports.orderStatusSchema = zod_1.z.object({
     createdAt: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
         message: 'Invalid date format for createdAt',
     }).transform((val) => new Date(val))
+});
+//login schema
+exports.loginSchema = zod_1.z.object({
+    email: zod_1.z.string(),
+    password: zod_1.z.string()
+});
+//register schema
+exports.registerSchema = zod_1.z.object({
+    email: zod_1.z.string(),
+    password: zod_1.z.string(),
+    firstName: zod_1.z.string(),
+    lastName: zod_1.z.string(),
+    phone: zod_1.z.string(),
+    createdAt: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for createdAt',
+    }).transform((val) => new Date(val)),
+    updatedAt: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for updatedAt',
+    }).transform((val) => new Date(val)),
+    role: zod_1.z.string().optional()
 });
