@@ -41,3 +41,17 @@ export const deleteDriverService = async (id: number) => {
     await db.delete(driverTable).where(eq(driverTable.id, id));
     return "driver deleted successfully"
 }
+
+// display driver with address
+export const driverWithAddressService = async (id: number) => {
+    return await db.query.driverTable.findMany({
+        with: {
+            order: {
+                columns: {
+                    actualDeliveryTime: true,
+                }
+            }
+        },
+        where: eq(driverTable.id, id)
+    });
+}

@@ -70,6 +70,9 @@ app.get('/', (c) => {
                     margin: 0;
                     padding: 0;
                 }
+                h1{
+                  aliign: center;
+                }
                 .link {
                     display: block;
                     margin-bottom: 10px;
@@ -82,20 +85,20 @@ app.get('/', (c) => {
         </head>
         <body>
             <h1>Restaurant Data</h1>
-            <div> 
-                <a class="link" href="/register">Register </a>
-                <a class="link" href="/users">View Users</a>
-                <a class="link" href="/restaurant">View Restaurants</a>
+            <ul> 
+                <li><a class="link" href="/users">View Users</a></li>
+                <li><a class="link" href="/register">Register </a></li>
+                <li><a class="link" href="/restaurants">View Restaurants</a></li>
 
-                <a class="link" href="/states">View states</a>
-                <a class="link" href="/orders">View orders</a>
-                <a class="link" href="/menu-items">View menu-items</a>
-                <a class="link" href="/order-mannu-items">View order-mannu-items</a>
-                <a class="link" href="/catalogs">View catalogs</a>
+                <li><a class="link" href="/states">View states</a></li>
+                <li><a class="link" href="/orders">View orders</a></li>
+                <li><a class="link" href="/menu-items">View menu-items</a></li>
+                <li><a class="link" href="/order-menu-items">View order-mannu-items</a></li>
+                <li><a class="link" href="/catalogs">View catalogs</a></li>
                
 
                 <!-- Add more links for other tables as needed -->
-            </div>
+            </ul>
         </body>
         </html>
     `);

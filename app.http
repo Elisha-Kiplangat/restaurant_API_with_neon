@@ -32,11 +32,21 @@ DELETE http://localhost:8000/restaurants/7
 
 #---------------------- Users- replace the token!!!!!-------------------#
 ###
-GET http://localhost:8000/users
-Authorization: Bearer TOKEN
+### GET http://localhost:8000/users
+##Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MjA4NjAyfQ.jWlusEw63i34cJSqedNOTZ24SJn4atCjdu3r4JmWVqo
+
+###--- admin
+GET https://restaurant-mngt.azurewebsites.net/users
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MjA4NjAyfQ.jWlusEw63i34cJSqedNOTZ24SJn4atCjdu3r4JmWVqo
+
+###--- user invalid token
+GET https://restaurant-mngt.azurewebsites.net/users
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MTgyMDMwODd9.DiokaSe5S_G_luHpOiHnaiS9hVUZu4tol3_WVySTxjc
+
 
 ###
-POST http://localhost:8000/users
+### POST https://restaurant-mngt.azurewebsites.net/register
+POST http://localhost:8000/register
 Content-Type: application/json
 
 {
@@ -47,6 +57,25 @@ Content-Type: application/json
     "phone": "+25471521254",
     "createdAt": "2024-06-06",
     "updatedAt": "2024-06-06"
+}
+### ----------------------- role admin Login -----------------------------#
+###
+##POST https://restaurant-mngt.azurewebsites.net/login
+POST http://localhost:8000/login
+Content-Type: application/json
+
+{
+    "email": "john@gmail.com",
+    "password": "password"
+}
+
+### ----------------------- role user Login -----------------------------#
+POST https://restaurant-mngt.azurewebsites.net/login
+Content-Type: application/json
+
+{
+    "email": "jane@gmail.com",
+    "password": "1234"
 }
 ###
 PUT http://localhost:8000/users/8
@@ -333,6 +362,9 @@ Content-Type: application/json
 ###
 DELETE http://localhost:8000/drivers/5
 
+###
+GET http://localhost:8000/drivers-with-address/6
+
 #---- Restaurant owner---#
 ###
 GET http://localhost:8000/restaurant-owners 
@@ -396,35 +428,10 @@ Content-Type: application/json
     "updatedAt": "2024-06-12"
 }
 
-### ----------------------- Users admin Login -----------------------------#
-# POST  http://localhost:8000/login
-POST https://restaurant-mngt.azurewebsites.net/login
-Content-Type: application/json
 
-{
-    "email": "john@gmail.com",
-    "password": "password"
-}
-
-### ----------------------- Users user Login -----------------------------#
-POST https://restaurant-mngt.azurewebsites.net/login
-Content-Type: application/json
-
-{
-    "email": "jane@gmail.com",
-    "password": "1234"
-}
-
-###--- admin
-GET https://restaurant-mngt.azurewebsites.net/users
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MjA4NjAyfQ.jWlusEw63i34cJSqedNOTZ24SJn4atCjdu3r4JmWVqo
-
-###--- user
-GET https://restaurant-mngt.azurewebsites.net/users
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MTgyMDMwODd9.DiokaSe5S_G_luHpOiHnaiS9hVUZu4tol3_WVySTxjc
 
 ### ----------------------- Users delete -----------------------------#
-DELETE http://localhost:8000
+DELETE https://restaurant-mngt.azurewebsites.net
 
 ###
 GET https://restaurant-mngt.azurewebsites.net/users

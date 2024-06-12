@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { driverService, oneDriverService, addDriverService, updateDriverService, deleteDriverService } from "./driver.service";
+import { driverService, oneDriverService, addDriverService, updateDriverService, deleteDriverService, driverWithAddressService } from "./driver.service";
 
 export const driverController = async (c: Context) => {
     try {
@@ -72,6 +72,23 @@ export const deleteDriverController = async (c: Context) => {
 
         return c.json({ msg: res }, 201);
     } catch (error: any) {
+        return c.json({ error: error?.message }, 400)
+    }
+}
+
+
+
+export const driverWithAddressController = async (c: Context) => {
+    const id = parseInt(c.req.param("id"));
+    if (isNaN(id)) return c.text("Invalid ID", 400);
+
+    try {
+        const driver = await driverWithAddressService(id);
+        if (driver == undefined) return c.text("driver not found", 404);
+
+        return c.json(driver, 200);
+    }
+    catch (error: any) {
         return c.json({ error: error?.message }, 400)
     }
 }

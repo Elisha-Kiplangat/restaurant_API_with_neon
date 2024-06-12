@@ -22,26 +22,3 @@ export const loginService = async (user: userselect) => {
         
     })
 }
-
-//driver 
-
-// export const driverRegisterService = async (user: driverInsert): Promise<string | null> => {
-//     // console.log('Inserting user:', user);
-//     await db.insert(driverTable).values(user);
-//     return "Driver Created Successfully";
-// }
-
-// export const driverLoginService = async (user: driverselect) => {
-//     const { email, password } = user;
-//     return await db.query.driverTable.findFirst({
-//         columns: {
-//             email: true,
-//             firstName: true,
-//             lastName: true,
-//             phone: true,
-//             role: true,
-//             password: true
-//         }, where: sql `${driverTable.email} = ${email}`
-        
-//     })
-// }

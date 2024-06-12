@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { userService, oneUserService, userDetailService, addUserService,updateUserService, deleteUserService } from "./users.service";
+import { userService, oneUserService, userDetailService, updateUserService, deleteUserService } from "./users.service";
 
 export const userController = async (c: Context) => {
     try{
@@ -25,18 +25,18 @@ export const oneUserController = async (c: Context) => {
 
 //add user
 
-export const addUserController = async (c: Context) => {
-    try {
-        const user = await c.req.json();
-        const createdUser = await addUserService(user);
+// export const addUserController = async (c: Context) => {
+//     try {
+//         const user = await c.req.json();
+//         const createdUser = await addUserService(user);
 
-        if (!createdUser) return c.text("User not created", 404);
-        return c.json({ msg: createdUser }, 201);
+//         if (!createdUser) return c.text("User not created", 404);
+//         return c.json({ msg: createdUser }, 201);
 
-    } catch (error: any) {
-        return c.json({ error: error?.message }, 400)
-    }
-}
+//     } catch (error: any) {
+//         return c.json({ error: error?.message }, 400)
+//     }
+// }
 
 export const updateUserController = async (c: Context) => {
     const id = parseInt(c.req.param("id"));
