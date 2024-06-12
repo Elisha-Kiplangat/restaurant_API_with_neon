@@ -25,7 +25,7 @@ userRouter.post("users", zValidator('json', userSchema, (result, c) => {
 //update a user
 userRouter.put("/users/:id",adminRoleAuth, updateUserController)
 
-userRouter.delete("/users/:id", adminRoleAuth, deleteUserController)
+userRouter.delete("/delete/:id", adminRoleAuth, deleteUserController)
 
 userRouter.get("/user-details/:id", adminRoleAuth, userDetailController)
 

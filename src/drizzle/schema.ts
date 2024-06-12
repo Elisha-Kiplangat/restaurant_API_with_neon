@@ -17,8 +17,8 @@ export const menu_itemTable = pgTable("menu_item", {
     ingredients: text("ingredients").notNull(),
     price: real("price").notNull(),
     active: boolean("active").notNull(),
-    createdAt: date("created_at").notNull(),
-    updatedAt: date("updated_at").notNull(),
+    created_at: date("created_at").notNull(),
+    updated_at: date("updated_at").notNull(),
     
 
 })
@@ -39,8 +39,8 @@ export const restaurantTable = pgTable("restaurant", {
     address: varchar("street_address", { length: 255 }).notNull(),
     zip: varchar("zip_code", { length: 255 }).notNull(),
     cityId: integer("city_id").notNull().references(() => cityTable.id, { onDelete: "cascade" }),
-    created_at: date("createdAt").notNull(),
-    updated_at: date("updatedAt").notNull(),
+    created_at: date("created_at").notNull(),
+    updated_at: date("updated_at").notNull(),
     
 })
 
@@ -75,8 +75,8 @@ export const addressTable = pgTable("address", {
     deliveryInstructions: text("delivery_instructions").notNull(),
     userId: integer("user_id").notNull().references(() => userTable.id, { onDelete: "cascade" }),
     cityId: integer("city_id").notNull().references(() => cityTable.id, { onDelete: "cascade" }),
-    createdAt: date("created_at").notNull(),
-    updatedAt: date("updated_at").notNull()
+    created_at: date("created_at").notNull(),
+    updated_at: date("updated_at").notNull()
     
 })
 
@@ -108,8 +108,8 @@ export const orderTable: any = pgTable("orders", {
     discount: real("discount").notNull(),
     finalPrice: real("final_price").notNull(),
     comment: text("comment"),
-    createdAt: date("created_at").notNull(),
-    updatedAt: date("updated_at").notNull(),
+    created_at: date("created_at").notNull(),
+    updated_at: date("updated_at").notNull(),
     
 })
 
@@ -119,7 +119,7 @@ export const orderStatusTable = pgTable("order_status", {
     id: serial("id").primaryKey(),
     orderId: integer("order_id").notNull().references(() => orderTable.id, { onDelete: "cascade" }),
     statusCatalogId: integer("status_catalog_id").notNull().references(() => statusCatalogTable.id, { onDelete: "cascade" }),
-    createdAt: date("created_at").notNull(),
+    created_at: date("created_at").notNull(),
     
 })
 
@@ -153,8 +153,8 @@ export const userTable = pgTable("users", {
     firstName: varchar("first_name", { length: 255 }).notNull(),
     lastName: varchar("last_name", { length: 255 }).notNull(),
     phone: varchar("phone", { length: 255 }).notNull(),
-    createdAt: date("created_at").notNull(),
-    updatedAt: date("updated_at").notNull(),
+    created_at: date("created_at").notNull(),
+    updated_at: date("updated_at").notNull(),
     role: roleEnum("role").default("user")
     
 })
@@ -169,8 +169,8 @@ export const driverTable = pgTable("driver", {
     userId: integer("user_id").notNull().references(() => userTable.id, { onDelete: "cascade" }),
     online: boolean("online").notNull(),
     delivering: boolean("delivering").notNull(),
-    createdAt: date("created_at").notNull(),
-    updatedAt: date("updated_at").notNull(),
+    created_at: date("created_at").notNull(),
+    updated_at: date("updated_at").notNull(),
     
 })
 
@@ -183,8 +183,8 @@ export const CommentTable = pgTable("comment", {
     commentText: text("comment_text").notNull(),
     isComplaint: boolean("is_complaint").notNull(),
     isPraise: boolean("is_praise").notNull(),
-    createdAt: date("created_at").notNull(),
-    updatedAt: date("updated_at").notNull(),
+    created_at: date("created_at").notNull(),
+    updated_at: date("updated_at").notNull(),
     
 })
 

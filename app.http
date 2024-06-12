@@ -383,21 +383,20 @@ DELETE http://localhost:8000/order-status/2
 
 #-------------------------- Users Register --------------------#
 ###
-POST http://localhost:8000/register
+POST https://restaurant-mngt.azurewebsites.net/register
 Content-Type: application/json
 
 {
-    "email": "john@gmail.com",
-    "password": "password",
-    "firstName": "John",
-    "lastName": "Doe",
-    "phone": "+25471521254",
-    "createdAt": "2024-06-10",
-    "updatedAt": "2024-06-10",
-    "role": "admin"
+    "email": "alvert@gmail.com",
+    "password": "1234",
+    "firstName": "Alveres",
+    "lastName": "Martin",
+    "phone": "+25477361254",
+    "createdAt": "2024-06-12",
+    "updatedAt": "2024-06-12"
 }
 
-### ----------------------- Users Login -----------------------------#
+### ----------------------- Users admin Login -----------------------------#
 # POST  http://localhost:8000/login
 POST https://restaurant-mngt.azurewebsites.net/login
 Content-Type: application/json
@@ -407,9 +406,22 @@ Content-Type: application/json
     "password": "password"
 }
 
-###
-GET http://localhost:8000/users
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MTEyNjc5fQ.SbmnqgX01NG_7NAD2auzKIAw0C96Zp2dHYqiFg9PRYU
+### ----------------------- Users user Login -----------------------------#
+POST https://restaurant-mngt.azurewebsites.net/login
+Content-Type: application/json
+
+{
+    "email": "jane@gmail.com",
+    "password": "1234"
+}
+
+###--- admin
+GET https://restaurant-mngt.azurewebsites.net/users
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MjA4NjAyfQ.jWlusEw63i34cJSqedNOTZ24SJn4atCjdu3r4JmWVqo
+
+###--- user
+GET https://restaurant-mngt.azurewebsites.net/users
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MTgyMDMwODd9.DiokaSe5S_G_luHpOiHnaiS9hVUZu4tol3_WVySTxjc
 
 ### ----------------------- Users delete -----------------------------#
 DELETE http://localhost:8000/delete/3
@@ -418,14 +430,14 @@ DELETE http://localhost:8000/delete/3
 GET https://restaurant-mngt.azurewebsites.net/users
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MTQ3ODM1fQ.CJ7dWoN9_M9ZhKBqn9xQx7UNe0qf3Tx3j3d0b-62zic
 ###
-GET https://restaurant-managenent-api.azurewebsites.net/states
+GET https://restaurant-mngt.azurewebsites.net/states
 
 ###-- states with city----
-GET http://localhost:8000/states-details/1
+GET https://restaurant-mngt.azurewebsites.net/states-details/1
 
 ###-- user details ----
-GET http://localhost:8000/user-details/7
+GET https://restaurant-mngt.azurewebsites.net/user-details/7
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MjAwMjAyfQ.86lGUv4QTEF-eqSSbIB93MG4SUD0xBI195xSD5MzwGY
 
-###-- states with city----
-GET http://localhost:8000/cities
+###--city----
+GET https://restaurant-mngt.azurewebsites.net/cities
