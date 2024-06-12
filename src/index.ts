@@ -19,9 +19,9 @@ import { authRouter } from './auth/auth.router'
 
 const app = new Hono()
 
-app.get('/', (c) => {
-  return c.text('Hello Hono!')
-})
+// app.get('/', (c) => {
+//   return c.text('Hello Hono!')
+// })
 
 app.route('/', restaurantRouter)
 
@@ -53,6 +53,53 @@ app.route('/', restaurantOwnerRouter)
 
 app.route('/', orderStatusRouter)
 
+
+app.get('/', (c) => {
+    // Send the HTML content as response
+    return c.html(`
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Restaurant Data</title>
+            <style>
+                /* Basic styling */
+                body {
+                    font-family: Arial, sans-serif;
+                    margin: 0;
+                    padding: 0;
+                }
+                .link {
+                    display: block;
+                    margin-bottom: 10px;
+                    font-size: 16px;
+                }
+                .link:hover {
+                    color: blue; /* Change color on hover */
+                }
+            </style>
+        </head>
+        <body>
+            <h1>Restaurant Data</h1>
+            <div> 
+                <a class="link" href="/register">Register </a>
+                <a class="link" href="/users">View Users</a>
+                <a class="link" href="/restaurant">View Restaurants</a>
+
+                <a class="link" href="/states">View states</a>
+                <a class="link" href="/orders">View orders</a>
+                <a class="link" href="/menu-items">View menu-items</a>
+                <a class="link" href="/order-mannu-items">View order-mannu-items</a>
+                <a class="link" href="/catalogs">View catalogs</a>
+               
+
+                <!-- Add more links for other tables as needed -->
+            </div>
+        </body>
+        </html>
+    `);
+});
 
 serve({
   fetch: app.fetch,

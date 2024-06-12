@@ -424,7 +424,7 @@ GET https://restaurant-mngt.azurewebsites.net/users
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MTgyMDMwODd9.DiokaSe5S_G_luHpOiHnaiS9hVUZu4tol3_WVySTxjc
 
 ### ----------------------- Users delete -----------------------------#
-DELETE http://localhost:8000/delete/3
+DELETE http://localhost:8000
 
 ###
 GET https://restaurant-mngt.azurewebsites.net/users
