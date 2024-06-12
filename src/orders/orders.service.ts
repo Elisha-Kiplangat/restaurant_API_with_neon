@@ -43,3 +43,20 @@ export const deleteOrderService = async (id: number) => {
     await db.delete(orderTable).where(eq(orderTable.id, id));
     return "order deleted successfully"
 }
+
+// get order details from order status, order menuitem and order table
+// export const orderDetailService = async (id: number) => {
+//     return await db.query.orderTable.findMany({
+//         where: eq(orderTable.id, id),
+//         include: {
+//             orderStatus: true,
+//             orderMenuItem: {
+//                 include: {
+//                     menuItem: {
+//                         select: true
+//                     }
+//                 }
+//             }
+//         }
+//     });
+// };

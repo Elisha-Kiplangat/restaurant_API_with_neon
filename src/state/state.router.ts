@@ -1,5 +1,5 @@
 import {Hono} from 'hono'
-import {stateController, addState, oneStateController, updateStateController, deleteStateController} from './state.controller'
+import { stateController, addState, oneStateController, stateDetailController, updateStateController, deleteStateController} from './state.controller'
 import { zValidator } from "@hono/zod-validator";
 import { stateSchema } from "../validator";
 
@@ -18,5 +18,7 @@ stateRouter.post("states", zValidator('json', stateSchema, (result, c) => {
 stateRouter.put("/states/:id", updateStateController)
 
 stateRouter.delete("/states/:id", deleteStateController)
+
+stateRouter.get("/states-details/:id", stateDetailController)
 
 export default stateRouter;

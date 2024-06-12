@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { stateService, oneStateService, addStateService, updateStateService, deleteStateService } from "./state.service";
+import { stateService, oneStateService, stateDetailService, addStateService, updateStateService, deleteStateService } from "./state.service";
 
 export const stateController = async (c: Context) => {
     try{
@@ -76,3 +76,20 @@ export const deleteStateController = async (c: Context) => {
         return c.json({ error: error?.message }, 400)
     }
 }
+
+// 
+export const stateDetailController = async (c: Context) => {
+    const id = parseInt(c.req.param("id"));
+    if (isNaN(id)) return c.text("Invalid ID", 400);
+
+    try {
+        const stateDetails = await stateDetailService(id);
+        if (!stateDetails || stateDetails.length === 0) {
+            return c.text("State not found", 404);
+        }
+        return c.json(stateDetails, 200);
+    } catch (error) {
+        console.error(error);
+        return c.text("Internal Server Error", 500);
+    }
+};

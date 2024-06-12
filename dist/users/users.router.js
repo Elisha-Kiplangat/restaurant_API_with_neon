@@ -18,5 +18,5 @@ exports.userRouter.post("users", (0, zod_validator_1.zValidator)('json', validat
 }), users_controller_1.addUserController);
 //update a user
 exports.userRouter.put("/users/:id", users_controller_1.updateUserController);
-exports.userRouter.delete("/users/:id", users_controller_1.deleteUserController);
+exports.userRouter.delete("/users/:id", bearAuth_1.adminRoleAuth, users_controller_1.deleteUserController);
 exports.default = exports.userRouter;

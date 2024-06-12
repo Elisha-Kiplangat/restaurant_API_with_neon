@@ -1,5 +1,5 @@
 import { pgTable, text, varchar, serial, boolean, real, date, primaryKey, integer, pgEnum } from 'drizzle-orm/pg-core';
-import { relations } from 'drizzle-orm';
+import { Many, relations } from 'drizzle-orm';
 import { datetime } from 'drizzle-orm/mysql-core';
 
 

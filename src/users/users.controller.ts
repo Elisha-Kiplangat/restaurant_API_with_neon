@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { userService, oneUserService, addUserService,updateUserService, deleteUserService } from "./users.service";
+import { userService, oneUserService, userDetailService, addUserService,updateUserService, deleteUserService } from "./users.service";
 
 export const userController = async (c: Context) => {
     try{
@@ -75,3 +75,20 @@ export const deleteUserController = async (c: Context) => {
         return c.json({ error: error?.message }, 400)
     }
 }
+
+//
+export const userDetailController = async (c: Context) => {
+    const id = parseInt(c.req.param("id"));
+    if (isNaN(id)) return c.text("Invalid ID", 400);
+
+    try {
+        const userDetails = await userDetailService(id);
+        if (!userDetails || userDetails.length === 0) {
+            return c.text("User not found", 404);
+        }
+        return c.json(userDetails, 200);
+    } catch (error) {
+        console.error(error);
+        return c.text("Internal Server Error", 500);
+    }
+};

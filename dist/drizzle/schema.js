@@ -105,7 +105,7 @@ exports.roleEnum = (0, pg_core_1.pgEnum)("role", ["admin", "user", "driver", "ow
 //User table
 exports.userTable = (0, pg_core_1.pgTable)("users", {
     id: (0, pg_core_1.serial)("id").primaryKey(),
-    email: (0, pg_core_1.varchar)("email", { length: 255 }).notNull(),
+    email: (0, pg_core_1.varchar)("email", { length: 255 }).notNull().unique(),
     password: (0, pg_core_1.varchar)("password", { length: 255 }).notNull(),
     firstName: (0, pg_core_1.varchar)("first_name", { length: 255 }).notNull(),
     lastName: (0, pg_core_1.varchar)("last_name", { length: 255 }).notNull(),
