@@ -97,6 +97,9 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6
 GET http://localhost:8000/orders
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4Mjc1MjU4fQ.ZrN66hqwDoqnVo1tGmgHivVBjDuqc6xqJ_KEZfi0qms
 
+###
+GET http://localhost:8000/order-details/51
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4Mjc1MjU4fQ.ZrN66hqwDoqnVo1tGmgHivVBjDuqc6xqJ_KEZfi0qms
 
 ###
 

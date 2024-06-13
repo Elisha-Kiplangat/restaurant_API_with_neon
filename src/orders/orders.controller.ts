@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { orderService, oneOrderService, addOrderService, updateOrderService, deleteOrderService } from "./orders.service";
+import { orderService, oneOrderService, addOrderService, updateOrderService, deleteOrderService, orderWithOrderMenuItemService } from "./orders.service";
 
 export const ordersController = async (c: Context) => {
     try{
@@ -69,4 +69,36 @@ export const deleteOrderController = async (c: Context) => {
         return c.json({ error: error?.message }, 400)
     }
 }
+
+// export const orderWithOrderMenuItemController = async (c: Context) => {
+//     const id = parseInt(c.req.param("id"));
+//     if (isNaN(id)) return c.text("Invalid ID", 400);
+
+//     try {
+//         const order = await orderWithOrderMenuItemService(id);
+//         if (order == undefined) return c.text("order not found", 404);
+        
+//         return c.json(order, 200);
+
+//     } catch (error: any) {
+//         return c.json({ error: error?.message }, 400)
+//     }
+// }
+
+// controller.ts
+export const orderWithOrderMenuItemController = async (c: Context) => {
+    const id = parseInt(c.req.param("id"));
+    if (isNaN(id)) return c.text("Invalid ID", 400);
+
+    try {
+        const order = await orderWithOrderMenuItemService(id);
+        if (!order || order.length === 0) return c.text("Order not found", 404);
+
+        return c.json(order, 200);
+
+    } catch (error: any) {
+        console.error('Failed to fetch order:', error); // Detailed error logging
+        return c.json({ error: error.message }, 400);
+    }
+};
 

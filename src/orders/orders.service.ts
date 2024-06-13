@@ -48,9 +48,43 @@ export const deleteOrderService = async (id: number) => {
 // export const orderWithOrderMenuItemService = async (id: number) => {
 //     return await db.query.orderTable.findMany({
 //         with: {
-//             order_menu_item: true,
-//             orderStatus: true
+//             orderMenuItem: {
+//                 columns: {
+//                     quantity: true
+//                 }
+//             }
 //         },
 //         where: eq(orderTable.id, id)
 //     });
 // };
+
+// service.ts
+export const orderWithOrderMenuItemService = async (id: number) => {
+    try {
+        return await db.query.orderTable.findMany({
+            columns: {
+                id: true,
+                actualDeliveryTime: true,
+                price: true
+            },
+            with: {
+                order: {
+                    columns:{
+                        quantity: true
+                    }
+                },
+                address: {
+                    columns: {
+                        streetAddress1: true,
+                        deliveryInstructions: true
+                    }
+                }
+            },
+            where: eq(orderTable.id, id)
+        });
+    } catch (error) {
+        console.error('Database query failed:', error); // Detailed error logging
+        throw new Error(`Database query failed`);
+    }
+};
+
