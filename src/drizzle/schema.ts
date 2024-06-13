@@ -201,15 +201,13 @@ export const AuthTable = pgTable("auth", {
 //Relationships
 // menu item table relations
 
-export const menuItemTableRelation = relations(menu_itemTable, ({ one }) => ({
-    restaurant: one(restaurantTable, {
-        fields: [menu_itemTable.restaurant_id],
-        references: [restaurantTable.id],
+export const menuItemTableRelation = relations(menu_itemTable, ({ one, many }) => ({
+    order_menu_item: one(order_menu_itemTable, {
+    fields: [menu_itemTable.id],
+    references: [order_menu_itemTable.menu_item_id]
     }),
-    category: one(categoryTable, {
-        fields: [menu_itemTable.category_id],
-        references: [categoryTable.id],
-    }),
+    restaurant: many(restaurantTable),
+    category: many(categoryTable)
 }));
 // category table relations
 
@@ -243,7 +241,7 @@ export const restaurantTableRelation = relations(restaurantTable, ({ one, many }
 }));
 //city table relation
 
-export const cityTableRelation = relations(cityTable, ({ one }) => ({
+export const cityTableRelation = relations(cityTable, ({ one, many }) => ({
     restaurant: one(restaurantTable, {
         fields: [cityTable.id],
         references: [restaurantTable.cityId]
@@ -251,7 +249,8 @@ export const cityTableRelation = relations(cityTable, ({ one }) => ({
     address: one(addressTable, {
         fields: [cityTable.id],
         references: [addressTable.cityId]
-    })
+    }),
+    state: many(stateTable)
 }));
 //state table relation
 
@@ -264,14 +263,20 @@ export const stateTableRelation = relations(stateTable, ({ one }) => ({
 
 //address table relation
 
-export const addressTableRelation = relations(addressTable, ({ one }) => ({
+export const addressTableRelation = relations(addressTable, ({ one, many }) => ({
     order: one(orderTable, {
         fields: [addressTable.id],
         references: [orderTable.deliveryAddressId],
-    })
+    }),
+    users: many(userTable)
 
 }));
 // order menu item table relation
+
+export const orderMenuitemRelation = relations(order_menu_itemTable, ({ many }) => ({
+    orders: many(orderTable),
+    menu_item: many(order_menu_itemTable)
+}))
 // order table relation
 
 export const orderTableRelation = relations(orderTable, ({ one, many }) => ({
@@ -335,14 +340,25 @@ export const userTableRelation = relations(userTable, ({ one }) => ({
 }));
 // driver table relation
 
-export const driverTableRelation = relations(driverTable, ({ one }) => ({
+export const driverTableRelation = relations(driverTable, ({ one, many }) => ({
     order: one(orderTable, {
         fields: [driverTable.id],
         references: [orderTable.driverId]
-    })
+    }),
+    users: many(userTable)
 }));
 
+//comments table relation
+export const commentTableRelation = relations(CommentTable, ({ many }) => ({
+    user: many(userTable),
+    order: many(orderTable)
+}))
 
+//order status table relation
+export const orderStatusRelation = relations(orderStatusTable, ({ many }) => ({
+    orders: many(orderTable),
+    status_catalog: many(statusCatalogTable)
+}))
 
 
 export type authselect = typeof AuthTable.$inferSelect;
