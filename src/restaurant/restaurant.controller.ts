@@ -1,5 +1,5 @@
 import { Context } from "hono";
-import { restaurantService, oneRestaurantService, addRestaurantService, updateRestaurantService, deleteRestaurantService } from "./restaurant.service";
+import { restaurantService, oneRestaurantService, addRestaurantService, updateRestaurantService, deleteRestaurantService, restaurantWithOwnerService } from "./restaurant.service";
 
 export const restaurantController = async (c: Context) => {
     try{
@@ -69,3 +69,20 @@ export const deleteRestaurantController = async (c: Context) => {
         return c.json({ error: error?.message }, 400)
     }
 }
+ 
+export const restaurantWithOwnerController = async (c: Context) => {
+    const id = parseInt(c.req.param("id"));
+    if (isNaN(id)) return c.text("Invalid ID", 400);
+
+    try {
+        const restaurant = await restaurantWithOwnerService(id);
+        if (!restaurant || restaurant.length === 0) {
+            return c.text("User not found", 404);
+        }
+        return c.json(restaurant, 200);
+    } catch (error) {
+        console.error(error);
+        return c.text("Internal Server Error!!", 500);
+    }
+}
+

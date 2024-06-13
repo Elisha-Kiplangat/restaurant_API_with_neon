@@ -7,37 +7,42 @@ GET http://localhost:8000/
 #---- Restaurant---#
 ###
 GET http://localhost:8000/restaurants
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4Mjk1NjY1fQ.iMfw1eyQ8ehIkfoNG1WnkNRC-q_5dXnm584CE4C76aA
+
 
 ###
 POST http://localhost:8000/restaurants
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4Mjk1NjY1fQ.iMfw1eyQ8ehIkfoNG1WnkNRC-q_5dXnm584CE4C76aA
 Content-Type: application/json
 
 {
-    "name": "example",
-    "address": "Kutus",
+    "name": "Highlands",
+    "address": "123 Kutus",
     "zip": 10100,
-    "cityId": 1,
-    "createdAt": "2024-06-06",
-    "updatedAt": "2024-06-06"
+    "cityId": 6,
+    "created_at": "2024-06-13",
+    "updated_at": "2024-06-13"
 }
 ###
-PUT http://localhost:8000/restaurants/8
+PUT http://localhost:8000/restaurants/15
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4Mjc1MjU4fQ.ZrN66hqwDoqnVo1tGmgHivVBjDuqc6xqJ_KEZfi0qms
 Content-Type: application/json
 
 {
     "name": "Hillton"
 }
 ###
-DELETE http://localhost:8000/restaurants/7
+DELETE http://localhost:8000/restaurants/15
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4Mjk1NjY1fQ.iMfw1eyQ8ehIkfoNG1WnkNRC-q_5dXnm584CE4C76aA
 
-#---------------------- Users- replace the token!!!!!-------------------#
+#---------------------- Users- token!!!-------------------#
 ###
-### GET http://localhost:8000/users
-##Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MjA4NjAyfQ.jWlusEw63i34cJSqedNOTZ24SJn4atCjdu3r4JmWVqo
+GET http://localhost:8000/user-details/7
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4Mjk1NjY1fQ.iMfw1eyQ8ehIkfoNG1WnkNRC-q_5dXnm584CE4C76aA
 
 ###--- admin
 GET https://restaurant-mngt.azurewebsites.net/users
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MjA4NjAyfQ.jWlusEw63i34cJSqedNOTZ24SJn4atCjdu3r4JmWVqo
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4Mjk1NjY1fQ.iMfw1eyQ8ehIkfoNG1WnkNRC-q_5dXnm584CE4C76aA
 
 ###--- user invalid token
 GET https://restaurant-mngt.azurewebsites.net/users
@@ -50,14 +55,11 @@ POST http://localhost:8000/register
 Content-Type: application/json
 
 {
-    "email": "example@gmail.com",
-    "password": "example",
-    "firstName": "John",
-    "lastName": "Doe",
-    "phone": "+25471521254",
-    "createdAt": "2024-06-06",
-    "updatedAt": "2024-06-06"
+    "email": "john@gmail.com",
+    "password": "passkey",
+    "role": "admin"
 }
+
 ### ----------------------- role admin Login -----------------------------#
 ###
 ##POST https://restaurant-mngt.azurewebsites.net/login
@@ -66,7 +68,7 @@ Content-Type: application/json
 
 {
     "email": "john@gmail.com",
-    "password": "password"
+    "password": "passkey"
 }
 
 ### ----------------------- role user Login -----------------------------#
@@ -78,7 +80,8 @@ Content-Type: application/json
     "password": "1234"
 }
 ###
-PUT http://localhost:8000/users/8
+PUT http://localhost:8000/users/11
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4Mjk1NjY1fQ.iMfw1eyQ8ehIkfoNG1WnkNRC-q_5dXnm584CE4C76aA
 Content-Type: application/json
 
 {
@@ -86,10 +89,14 @@ Content-Type: application/json
 }
 ###
 DELETE http://localhost:8000/users/3
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4Mjc1MjU4fQ.ZrN66hqwDoqnVo1tGmgHivVBjDuqc6xqJ_KEZfi0qms
+
 
 #---- Orders---#
 ###
 GET http://localhost:8000/orders
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4Mjc1MjU4fQ.ZrN66hqwDoqnVo1tGmgHivVBjDuqc6xqJ_KEZfi0qms
+
 
 ###
 

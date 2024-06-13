@@ -44,3 +44,13 @@ export const deleteRestaurantService = async (id: number) => {
     await db.delete(restaurantTable).where(eq(restaurantTable.id, id));
     return "Restaurant deleted successfully"
 }
+
+//restaurant with restaurant owner
+export const restaurantWithOwnerService = async (id: number) => {
+    return await db.query.restaurantTable.findMany({
+        with: {
+            address: true
+        },
+        where: eq(restaurantTable.id, id)
+    });
+};

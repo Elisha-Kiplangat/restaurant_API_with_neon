@@ -1,24 +1,21 @@
-import { userselect, userInsert, userTable, driverInsert, driverTable, driverselect } from '../drizzle/schema';
+import { authselect, authInsert, AuthTable } from '../drizzle/schema';
 import db from '../drizzle/db';
 import { sql } from 'drizzle-orm';
 
-export const registerService = async (user: userInsert): Promise<string | null> => {
+export const registerService = async (user: authInsert): Promise<string | null> => {
     // console.log('Inserting user:', user);
-    await db.insert(userTable).values(user);
+    await db.insert(AuthTable).values(user);
     return "User Created Successfully";
 }
 
-export const loginService = async (user: userselect) => {
+export const loginService = async (user: authselect) => {
     const { email, password } = user;
-    return await db.query.userTable.findFirst({
+    return await db.query.AuthTable.findFirst({
         columns: {
             email: true,
-            firstName: true,
-            lastName: true,
-            phone: true,
-            role: true,
-            password: true
-        }, where: sql `${userTable.email} = ${email}`
+            password: true,
+            role: true
+        }, where: sql `${AuthTable.email} = ${email}`
         
     })
 }

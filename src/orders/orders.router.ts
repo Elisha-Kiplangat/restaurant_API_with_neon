@@ -1,7 +1,8 @@
 import {Hono} from 'hono'
 import { zValidator } from '@hono/zod-validator';
-import {ordersController, oneOrderController, addOrderController, updateOrderController, deleteOrderController} from './orders.controller'
+import { ordersController, oneOrderController,  addOrderController, updateOrderController, deleteOrderController} from './orders.controller'
 import {orderSchema} from '../validator'
+import { adminRoleAuth, userRoleAuth } from "../middleware/bearAuth";
 
 export const ordersRouter = new Hono();
 
@@ -22,5 +23,7 @@ ordersRouter.post("orders", zValidator('json', orderSchema, (result, c) => {
 ordersRouter.put("/orders/:id", updateOrderController)
 
 ordersRouter.delete("/orders/:id", deleteOrderController)
+
+
 
 export default ordersRouter;

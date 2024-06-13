@@ -33,3 +33,4 @@ export const deleteAddressService = async (id: number) => {
     await db.delete(addressTable).where(eq(addressTable.id, id));
     return "Address deleted successfully"
 }
+

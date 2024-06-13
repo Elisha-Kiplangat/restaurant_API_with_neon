@@ -9,11 +9,11 @@ export const userSchema = z.object({
     firstName: z.string(),
     lastName: z.string(),
     phone: z.string(),
-    createdAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for createdAt',
+    created_at: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for created_at',
     }).transform((val) => new Date(val)),
-    updatedAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for updatedAt',
+    updated_at: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for updated_at',
     }).transform((val) => new Date(val))
 })
 
@@ -30,11 +30,11 @@ export const commentSchema = z.object({
     commentText: z.string(),
     isComplaint: z.boolean(),
     isPraise: z.boolean(),
-    createdAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for createdAt',
+    created_at: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for created_at',
     }).transform((val) => new Date(val)),
-    updatedAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for updatedAt',
+    updated_at: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for updated_at',
     }).transform((val) => new Date(val))
 })
 
@@ -45,11 +45,11 @@ export const addressSchema = z.object({
     deliveryInstructions: z.string(),
     userId: z.number(),
     cityId: z.number(),
-    createdAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for createdAt',
+    created_at: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for created_at',
     }).transform((val) => new Date(val)),
-    updatedAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for updatedAt',
+    updated_at: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for updated_at',
     }).transform((val) => new Date(val))
 })
 
@@ -58,11 +58,11 @@ export const restaurantSchema = z.object({
     address: z.string(),
     zip: z.number(),
     cityId: z.number(),
-    createdAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for createdAt',
+    created_at: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for created_at',
     }).transform((val) => new Date(val)),
-    updatedAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for updatedAt',
+    updated_at: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for updated_at',
     }).transform((val) => new Date(val))
 })
 
@@ -81,11 +81,11 @@ export const orderSchema = z.object({
     discount: z.number(),
     finalPrice: z.number(),
     comment: z.string(),
-    createdAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for createdAt',
+    created_at: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for created_at',
     }).transform((val) => new Date(val)),
-    updatedAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for updatedAt',
+    updated_at: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for updated_at',
     }).transform((val) => new Date(val))
 })
 
@@ -97,11 +97,11 @@ export const menuItemSchema = z.object({
     ingredients: z.string(),
     price: z.number(),
     active: z.boolean(),
-    createdAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for createdAt',
+    created_at: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for created_at',
     }).transform((val) => new Date(val)),
-    updatedAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for updatedAt',
+    updated_at: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for updated_at',
     }).transform((val) => new Date(val))
 })
 
@@ -134,11 +134,11 @@ export const driverSchema = z.object({
     userId: z.number(),
     online: z.boolean(),
     delivering: z.boolean(),
-    createdAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for createdAt',
+    created_at: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for created_at',
     }).transform((val) => new Date(val)),
-    updatedAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for updatedAt',
+    updated_at: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for updated_at',
     }).transform((val) => new Date(val))
 })
 
@@ -150,8 +150,8 @@ export const restaurantOwnerSchema = z.object({
 export const orderStatusSchema = z.object({
     orderId: z.number(),
     statusCatalogId: z.number(),
-    createdAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for createdAt',
+    created_at: z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for created_at',
     }).transform((val) => new Date(val))
 })
 
@@ -165,14 +165,5 @@ export const loginSchema = z.object({
 export const registerSchema = z.object({
     email: z.string(),
     password: z.string(),
-    firstName: z.string(),
-    lastName: z.string(),
-    phone: z.string(),
-    createdAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for createdAt',
-    }).transform((val) => new Date(val)),
-    updatedAt: z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for updatedAt',
-    }).transform((val) => new Date(val)),
     role: z.string().optional()
 })

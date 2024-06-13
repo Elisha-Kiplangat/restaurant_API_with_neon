@@ -41,3 +41,5 @@ export const deleteMenuItemService = async (id: number) => {
     await db.delete(menu_itemTable).where(eq(menu_itemTable.id, id));
     return "menuItem deleted successfully"
 }
+
+// both menu item and order menu item

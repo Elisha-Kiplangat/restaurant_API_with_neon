@@ -1,5 +1,5 @@
 import { Hono } from 'hono'
-import { userController, oneUserController, userDetailController, updateUserController, deleteUserController } from './users.controller'
+import { userController, oneUserController, addUserController, userDetailController, updateUserController, deleteUserController } from './users.controller'
 import { zValidator } from "@hono/zod-validator";
 import { userSchema } from "../validator";
 import { adminRoleAuth, userRoleAuth } from "../middleware/bearAuth";
@@ -13,11 +13,11 @@ userRouter.get("/users/:id", userRoleAuth, oneUserController)
 
 //add user
 
-// userRouter.post("users", zValidator('json', userSchema, (result, c) => {
-//     if (!result.success) {
-//         return c.json(result.error, 400)
-//     }
-// }), addUserController)
+userRouter.post("users", adminRoleAuth, zValidator('json', userSchema, (result, c) => {
+    if (!result.success) {
+        return c.json(result.error, 400)
+    }
+}), addUserController)
 
 
 

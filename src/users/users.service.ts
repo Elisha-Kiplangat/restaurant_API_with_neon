@@ -20,10 +20,10 @@ export const oneUserService = async (id: number): Promise<userselect | undefined
     })
 }
 
-// export const addUserService = async (user: userInsert) => {
-//     await db.insert(userTable).values(user)
-//     return "User added successfully";
-// }
+export const addUserService = async (user: userInsert) => {
+    await db.insert(userTable).values(user)
+    return "User added successfully";
+}
 
 export const updateUserService = async (id: number, user: userInsert) => {
     try {
@@ -50,8 +50,18 @@ export const deleteUserService = async (id: number) => {
 export const userDetailService = async (id: number) => {
     return await db.query.userTable.findMany({
         with: {
-            order: true,
-            address: true
+            order: {
+                columns: {
+                    id: true,
+                    actualDeliveryTime: true
+                }
+            },
+            address: {
+                columns: {
+                    streetAddress1: true,
+                    deliveryInstructions: true
+                }
+            }
         },
         where: eq(userTable.id, id)
     });
