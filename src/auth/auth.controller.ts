@@ -50,3 +50,17 @@ export const loginController = async (c: Context) => {
         }
 
     }
+
+// export const updatepasswordController = async (c: Context) => {
+//     try {
+//         const { email, password } = await c.req.json();
+//         const hashedPass = await bcrypt.hash(password, 10);
+//         const message = await updatepasswordService(email, hashedPass);
+//         return c.json({ msg: message }, 200);
+//     } catch (error: any) {
+//         if (error.message === "User not found") {
+//             return c.json({ error: "User not found" }, 404);
+//         }
+//         return c.json({ error: error?.message || "An error occurred" }, 400);
+//     }
+// }

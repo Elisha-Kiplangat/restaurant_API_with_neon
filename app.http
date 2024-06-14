@@ -7,7 +7,7 @@ GET http://localhost:8000/
 #---- Restaurant---#
 ###
 GET http://localhost:8000/restaurants
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4Mjk1NjY1fQ.iMfw1eyQ8ehIkfoNG1WnkNRC-q_5dXnm584CE4C76aA
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqb2huQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwiZXhwIjoxNzE4Mzc3MDE1fQ.WdQae4Oauv8FVh2VWKilOBhAGspbQdNjT_2BiRKSqvw
 
 
 ###
@@ -67,18 +67,28 @@ POST http://localhost:8000/login
 Content-Type: application/json
 
 {
+    "email": "example@gmail.com",
+    "password": "password"
+}
+
+### ----------------------- role user Login -----------------------------#
+POST http://localhost:8000/login
+Content-Type: application/json
+
+{
     "email": "john@gmail.com",
     "password": "passkey"
 }
 
-### ----------------------- role user Login -----------------------------#
-POST https://restaurant-mngt.azurewebsites.net/login
-Content-Type: application/json
+# ### ------------update password-----------------#
+# PUT http://localhost:8000/update-password
+# Content-Type: application/json
 
-{
-    "email": "jane@gmail.com",
-    "password": "1234"
-}
+# {
+#     "email": "example@gmail.com",
+#     "password": "password"
+# }
+
 ###
 PUT http://localhost:8000/users/11
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4Mjk1NjY1fQ.iMfw1eyQ8ehIkfoNG1WnkNRC-q_5dXnm584CE4C76aA

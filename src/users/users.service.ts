@@ -1,6 +1,6 @@
 import { stat } from "fs";
 import db from "../drizzle/db"
-import { userselect, userInsert, userTable, orderTable } from "../drizzle/schema"
+import { userselect, userInsert, userTable, UserDetailResult } from "../drizzle/schema"
 import { eq } from "drizzle-orm";
 
 // all users
@@ -47,7 +47,7 @@ export const deleteUserService = async (id: number) => {
 // user details, if a user, get the orders and the state, city, and the order status
 
 
-export const userDetailService = async (id: number) => {
+export const userDetailService = async (id: number): Promise<UserDetailResult | null> => {
     return await db.query.userTable.findMany({
         with: {
             order: {
@@ -64,5 +64,5 @@ export const userDetailService = async (id: number) => {
             }
         },
         where: eq(userTable.id, id)
-    });
+    })
 };

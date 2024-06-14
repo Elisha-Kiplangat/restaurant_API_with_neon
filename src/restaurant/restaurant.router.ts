@@ -2,11 +2,11 @@ import {Hono} from 'hono'
 import { restaurantController, oneRestaurantController, addRestaurantController, deleteRestaurantController, updateRestaurantController, restaurantWithOwnerController } from './restaurant.controller'
 import {restaurantSchema} from '../validator'
 import { zValidator } from '@hono/zod-validator';
-import { adminRoleAuth, userRoleAuth } from "../middleware/bearAuth";
+import { adminRoleAuth, userRoleAuth, allRoleAuth } from "../middleware/bearAuth";
 
 export const restaurantRouter = new Hono();
 
-restaurantRouter.get('/restaurants', adminRoleAuth, restaurantController);
+restaurantRouter.get('/restaurants', allRoleAuth, restaurantController);
 
 //one restaurant
 restaurantRouter.get("/restaurants/:id", userRoleAuth, oneRestaurantController)

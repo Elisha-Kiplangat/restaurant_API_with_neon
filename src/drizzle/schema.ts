@@ -406,3 +406,37 @@ export type orderStatusInsert = typeof orderStatusTable.$inferInsert;
 export type restaurantOwnerselect = typeof restaurantOwnerTable.$inferSelect;
 export type restaurantOwnerInsert = typeof restaurantOwnerTable.$inferInsert;
 
+//defining the auth login type
+export interface authlogin {
+    email: string;
+    password: string;
+    role: string;
+}
+
+interface Order {
+    id: number;
+    actualDeliveryTime: string; // or Date if it returns a Date object
+}
+
+// Define the shape of the address object
+interface Address {
+    streetAddress1: string;
+    deliveryInstructions: string;
+}
+
+// Define the shape of the user object
+interface User {
+    id: number;
+    email: string;
+    password: string;
+    firstName: string;
+    lastName: string;
+    phone: string;
+    created_at: string;
+    updated_at: string;
+    address: Address | Address[];  // Allow address to be a single object or an array
+    order: Order | Order[];        // Allow order to be a single object or an array
+}
+
+// Define the type for the userDetailService return type
+export type UserDetailResult = User[];

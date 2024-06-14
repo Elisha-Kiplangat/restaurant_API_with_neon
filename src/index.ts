@@ -58,49 +58,84 @@ app.get('/', (c) => {
     // Send the HTML content as response
     return c.html(`
         <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Restaurant Data</title>
-            <style>
-                /* Basic styling */
-                body {
-                    font-family: Arial, sans-serif;
-                    margin: 0;
-                    padding: 0;
-                }
-                h1{
-                  aliign: center;
-                }
-                .link {
-                    display: block;
-                    margin-bottom: 10px;
-                    font-size: 16px;
-                }
-                .link:hover {
-                    color: blue; /* Change color on hover */
-                }
-            </style>
-        </head>
-        <body>
-            <h1>Restaurant Data</h1>
-            <ul> 
-                <li><a class="link" href="/users">View Users</a></li>
-                <li><a class="link" href="/register">Register </a></li>
-                <li><a class="link" href="/restaurants">View Restaurants</a></li>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Data</title>
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+        }
 
-                <li><a class="link" href="/states">View states</a></li>
-                <li><a class="link" href="/orders">View orders</a></li>
-                <li><a class="link" href="/menu-items">View menu-items</a></li>
-                <li><a class="link" href="/order-menu-items">View order-mannu-items</a></li>
-                <li><a class="link" href="/catalogs">View catalogs</a></li>
-               
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5rem;
+            color: #343a40;
+        }
 
-                <!-- Add more links for other tables as needed -->
-            </ul>
-        </body>
-        </html>
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 300px;
+            margin: auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .link {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px;
+            text-decoration: none;
+            color: #007bff;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .link:hover {
+            color: #fff;
+            background-color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <h1>Restaurant Data API by Elisha</h1>
+        <ul>
+            
+            <li><a class="link" href="/register">Register</a></li>
+            <li><a class="link" href="/login">Login</a></li>
+            <li><a class="link" href="/users">View Users</a></li>
+            <li><a class="link" href="/restaurants">View Restaurants</a></li>
+            <li><a class="link" href="/states">View States</a></li>
+            <li><a class="link" href="/orders">View Orders</a></li>
+            <li><a class="link" href="/menu-items">View Menu Items</a></li>
+            <li><a class="link" href="/order-menu-items">View Order Menu Items</a></li>
+            <li><a class="link" href="/catalogs">View Catalogs</a></li>
+        </ul>
+    </div>
+</body>
+</html>
+
     `);
 });
 

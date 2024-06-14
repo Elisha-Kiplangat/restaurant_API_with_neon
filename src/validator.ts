@@ -167,3 +167,8 @@ export const registerSchema = z.object({
     password: z.string(),
     role: z.string().optional()
 })
+
+export const updatePassSchema = z.object({
+    email: z.string().email(),
+    password: z.string()
+})
