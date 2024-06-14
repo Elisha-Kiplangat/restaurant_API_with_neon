@@ -122,15 +122,16 @@ app.get('/', (c) => {
         <h1>Restaurant Data API by Elisha</h1>
         <ul>
             
-            <li><a class="link" href="/register">Register</a></li>
-            <li><a class="link" href="/login">Login</a></li>
             <li><a class="link" href="/users">View Users</a></li>
             <li><a class="link" href="/restaurants">View Restaurants</a></li>
             <li><a class="link" href="/states">View States</a></li>
+            <li><a class="link" href="/cities">cities</a></li>
             <li><a class="link" href="/orders">View Orders</a></li>
             <li><a class="link" href="/menu-items">View Menu Items</a></li>
             <li><a class="link" href="/order-menu-items">View Order Menu Items</a></li>
-            <li><a class="link" href="/catalogs">View Catalogs</a></li>
+            <li><a class="link" href="/addresses">Addresses</a></li>
+            
+            <li><a class="link" href="/categories ">View Categories </a></li>
         </ul>
     </div>
 </body>
