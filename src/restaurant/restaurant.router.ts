@@ -9,7 +9,7 @@ export const restaurantRouter = new Hono();
 restaurantRouter.get('/restaurants', allRoleAuth, restaurantController);
 
 //one restaurant
-restaurantRouter.get("/restaurants/:id", userRoleAuth, oneRestaurantController)
+restaurantRouter.get("/restaurants/:id", allRoleAuth, oneRestaurantController)
 
 //add restaurant
 
@@ -20,7 +20,7 @@ restaurantRouter.post("restaurants", adminRoleAuth, zValidator('json', restauran
 }), addRestaurantController)
 
 //update a restaurant
-restaurantRouter.put("/restaurants/:id", userRoleAuth, updateRestaurantController)
+restaurantRouter.put("/restaurants/:id", adminRoleAuth, updateRestaurantController)
 
 restaurantRouter.delete("/restaurants/:id", adminRoleAuth, deleteRestaurantController)
 

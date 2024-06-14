@@ -41,8 +41,9 @@ GET http://localhost:8000/user-details/7
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4Mjk1NjY1fQ.iMfw1eyQ8ehIkfoNG1WnkNRC-q_5dXnm584CE4C76aA
 
 ###--- admin
-GET https://restaurant-mngt.azurewebsites.net/users
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4Mjk1NjY1fQ.iMfw1eyQ8ehIkfoNG1WnkNRC-q_5dXnm584CE4C76aA
+# GET https://restaurant-mngt.azurewebsites.net/users
+GET http://localhost:8000/users
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 
 ###--- user invalid token
 GET https://restaurant-mngt.azurewebsites.net/users
@@ -55,8 +56,8 @@ POST http://localhost:8000/register
 Content-Type: application/json
 
 {
-    "email": "john@gmail.com",
-    "password": "passkey",
+    "email": "jane@gmail.com",
+    "password": "password",
     "role": "admin"
 }
 
@@ -67,7 +68,7 @@ POST http://localhost:8000/login
 Content-Type: application/json
 
 {
-    "email": "example@gmail.com",
+    "email": "jane@gmail.com",
     "password": "password"
 }
 
@@ -114,6 +115,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6
 ###
 
 POST http://localhost:8000/orders
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 Content-Type: application/json
 
 {
@@ -133,6 +135,7 @@ Content-Type: application/json
 
 ###
 PUT http://localhost:8000/orders/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 Content-Type: application/json
 
 {
@@ -140,14 +143,19 @@ Content-Type: application/json
 }
 ###
 DELETE http://localhost:8000/orders/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
+
 
 #---- States---#
 ###
 GET http://localhost:8000/states
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
+
 
 ###
 
 POST http://localhost:8000/states
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 Content-Type: application/json
 
 {
@@ -157,6 +165,7 @@ Content-Type: application/json
 
 ###
 PUT http://localhost:8000/states/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 Content-Type: application/json
 
 {
@@ -164,14 +173,19 @@ Content-Type: application/json
 }
 ###
 DELETE http://localhost:8000/states/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
+
 
 #---- Menu item---#
 ###
 GET http://localhost:8000/menu-items
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
+
 
 ###
 
 POST http://localhost:8000/menu-items
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 Content-Type: application/json
 
 {
@@ -188,6 +202,7 @@ Content-Type: application/json
 
 ###
 PUT http://localhost:8000/menu-items/5
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 Content-Type: application/json
 
 {
@@ -198,13 +213,18 @@ Content-Type: application/json
 }
 ###
 DELETE http://localhost:8000/menu-items/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
+
 
 #---- Category---#
 ###
 GET http://localhost:8000/categories 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
+
 ###
 
 POST http://localhost:8000/categories
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 Content-Type: application/json
 
 {
@@ -213,6 +233,7 @@ Content-Type: application/json
 
 ###
 PUT http://localhost:8000/categories/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 Content-Type: application/json
 
 {
@@ -220,14 +241,19 @@ Content-Type: application/json
 }
 ###
 DELETE http://localhost:8000/categories/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
+
 
 #---- Comments---#
 ###
 GET http://localhost:8000/comments
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
+
 
 ###
 
 POST http://localhost:8000/comments
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 Content-Type: application/json
 
 {
@@ -241,6 +267,7 @@ Content-Type: application/json
 }
 ###
 PUT http://localhost:8000/comments/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 Content-Type: application/json
 
 {
@@ -248,14 +275,17 @@ Content-Type: application/json
 }
 ###
 DELETE http://localhost:8000/comments/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 
 #---- Address---#
 ###
 GET http://localhost:8000/addresses
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 
 ###
 
 POST http://localhost:8000/addresses
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 Content-Type: application/json
 
 {
@@ -271,6 +301,7 @@ Content-Type: application/json
 
 ###
 PUT http://localhost:8000/addresses/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 Content-Type: application/json
 
 {
@@ -278,13 +309,17 @@ Content-Type: application/json
 }
 ###
 DELETE http://localhost:8000/addresses/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 
 #---- City---#
 ###
 GET http://localhost:8000/cities 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
+
 ###
 
 POST http://localhost:8000/cities
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 Content-Type: application/json
 
 {
@@ -294,6 +329,7 @@ Content-Type: application/json
 
 ###
 PUT http://localhost:8000/cities/4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 Content-Type: application/json
 
 {
@@ -301,13 +337,17 @@ Content-Type: application/json
 }
 ###
 DELETE http://localhost:8000/cities/5
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 
 #---- Order menu item---#
 ###
 GET http://localhost:8000/order-menu-items 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
+
 ###
 
 POST http://localhost:8000/order-menu-items
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 Content-Type: application/json
 
 {
@@ -321,6 +361,7 @@ Content-Type: application/json
 
 ###
 PUT http://localhost:8000/order-menu-items/4
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 Content-Type: application/json
 
 {
@@ -329,13 +370,17 @@ Content-Type: application/json
 }
 ###
 DELETE http://localhost:8000/order-menu-items/5
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 
 #---- Status catalog---#
 ###
 GET http://localhost:8000/status-catalogs 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
+
 ###
 
 POST http://localhost:8000/status-catalogs
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 Content-Type: application/json
 
 {
@@ -344,6 +389,7 @@ Content-Type: application/json
 
 ###
 PUT http://localhost:8000/status-catalogs/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 Content-Type: application/json
 
 {
@@ -351,13 +397,17 @@ Content-Type: application/json
 }
 ###
 DELETE http://localhost:8000/status-catalogs/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 
 #---- driver---#
 ###
 GET http://localhost:8000/drivers 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
+
 ###
 
 POST http://localhost:8000/drivers
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 Content-Type: application/json
 
 {
@@ -373,6 +423,7 @@ Content-Type: application/json
 
 ###
 PUT http://localhost:8000/drivers/5
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 Content-Type: application/json
 
 {
@@ -381,16 +432,23 @@ Content-Type: application/json
 }
 ###
 DELETE http://localhost:8000/drivers/5
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
+
 
 ###
 GET http://localhost:8000/drivers-with-address/6
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
+
 
 #---- Restaurant owner---#
 ###
 GET http://localhost:8000/restaurant-owners 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
+
 ###
 
 POST http://localhost:8000/restaurant-owners
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 Content-Type: application/json
 
 {
@@ -400,6 +458,7 @@ Content-Type: application/json
 
 ###
 PUT http://localhost:8000/restaurant-owners/5
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 Content-Type: application/json
 
 {
@@ -407,13 +466,17 @@ Content-Type: application/json
 }
 ###
 DELETE http://localhost:8000/restaurant-owners/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 
 #---- Order status---#
 ###
 GET http://localhost:8000/order-status 
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
+
 ###
 
 POST http://localhost:8000/order-status
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 Content-Type: application/json
 
 {
@@ -424,6 +487,7 @@ Content-Type: application/json
 
 ###
 PUT http://localhost:8000/order-status/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 Content-Type: application/json
 
 {
@@ -431,6 +495,7 @@ Content-Type: application/json
 }
 ###
 DELETE http://localhost:8000/order-status/2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 
 
 #-------------------------- Users Register --------------------#
@@ -452,15 +517,19 @@ Content-Type: application/json
 
 ### ----------------------- Users delete -----------------------------#
 DELETE https://restaurant-mngt.azurewebsites.net
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 
 ###
 GET https://restaurant-mngt.azurewebsites.net/users
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4MTQ3ODM1fQ.CJ7dWoN9_M9ZhKBqn9xQx7UNe0qf3Tx3j3d0b-62zic
 ###
 GET https://restaurant-mngt.azurewebsites.net/states
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 
 ###-- states with city----
 GET https://restaurant-mngt.azurewebsites.net/states-details/1
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
+
 
 ###-- user details ----
 GET https://restaurant-mngt.azurewebsites.net/user-details/7
@@ -468,3 +537,4 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6
 
 ###--city----
 GET https://restaurant-mngt.azurewebsites.net/cities
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
