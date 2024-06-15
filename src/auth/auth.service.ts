@@ -1,12 +1,14 @@
 import { authselect, authInsert, AuthTable, authlogin } from '../drizzle/schema';
 import db from '../drizzle/db';
 import { sql } from 'drizzle-orm';
+import mailFunction from '../mail'
 
 
 
 export const registerService = async (user: authInsert): Promise<string | null> => {
     // console.log('Inserting user:', user);
     await db.insert(AuthTable).values(user);
+    await mailFunction (user.email, 'Registration Successful', user)
     return "User Created Successfully";
 }
 
