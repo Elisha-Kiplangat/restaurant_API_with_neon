@@ -60,7 +60,7 @@ POST http://localhost:8000/register
 Content-Type: application/json
 
 {
-    "email": "elishakronoh@gmail.com",
+    "email": "evans@gmail.com",
     "password": "password",
     "role": "admin"
 }
@@ -94,6 +94,19 @@ Content-Type: application/json
     "password": "password"
 }
 
+###
+POST http://localhost:8000/users
+Content-Type: application/json
+
+{
+    "email": "ezra4998@gmail.com",
+    "password": "password",
+    "firstName": "Ezra",
+    "lastName": "Ney",
+    "phone": "+25477361254",
+    "created_at": "2024-06-16",
+    "updated_at": "2024-06-16"
+}
 ###
 PUT http://localhost:8000/users/11
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4Mjk1NjY1fQ.iMfw1eyQ8ehIkfoNG1WnkNRC-q_5dXnm584CE4C76aA
@@ -504,7 +517,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNv
 
 #-------------------------- Users Register --------------------#
 ###
-POST https://restaurant-mngt.azurewebsites.net/register
+POST https://restaurant-mngt.azurewebsites.net/users
 Content-Type: application/json
 
 {

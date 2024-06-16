@@ -13,7 +13,7 @@ userRouter.get("/users/:id", allRoleAuth, oneUserController)
 
 //add user
 
-userRouter.post("users", allRoleAuth, zValidator('json', userSchema, (result, c) => {
+userRouter.post("users", zValidator('json', userSchema, (result, c) => {
     if (!result.success) {
         return c.json(result.error, 400)
     }
