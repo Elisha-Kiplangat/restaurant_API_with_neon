@@ -2,6 +2,7 @@ import { stat } from "fs";
 import db from "../drizzle/db"
 import { userselect, userInsert, userTable, UserDetailResult } from "../drizzle/schema"
 import { eq } from "drizzle-orm";
+import  mailFunction  from "../mail";
 
 // all users
 export const userService = async (limit?: number): Promise<userselect[]> => {
@@ -27,7 +28,8 @@ export const oneUserService = async (id: number): Promise<userselect | undefined
 }
 
 export const addUserService = async (user: userInsert) => {
-    await db.insert(userTable).values(user)
+    await db.insert(userTable).values(user);
+    await mailFunction(user.email, 'Registration Successful', user);
     return "User added successfully";
 }
 
@@ -42,7 +44,7 @@ export const updateUserService = async (id: number, user: userInsert) => {
     } catch (error) {
         throw new Error("Failed to update user: ");
     }
-    return undefined;
+    
 }
 
 export const deleteUserService = async (id: number) => {
