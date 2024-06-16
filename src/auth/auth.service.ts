@@ -26,8 +26,8 @@ export const loginService = async (user: authselect) => {
     }) as authlogin | undefined;
 }
 
-// export const updatepasswordService = async (email: string, password: string): Promise<string> => {
-//     await db.update(AuthTable).set({ password }).where(sql`${AuthTable.email} = ${email}`);
+export const updatepasswordService = async (email: string, password: string): Promise<string> => {
+    await db.update(AuthTable).set({ password }).where(sql`${AuthTable.email} = ${email}`);
     
-//     return "Password Updated Successfully";
-// }
+    return "Password Updated Successfully";
+}

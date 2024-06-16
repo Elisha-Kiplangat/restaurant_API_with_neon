@@ -1,7 +1,7 @@
 import { Hono } from 'hono';
 import { zValidator } from '@hono/zod-validator';
 import { registerSchema, loginSchema, updatePassSchema } from '../validator';
-import { registerController, loginController } from './auth.controller';
+import { registerController, loginController, updatepasswordController } from './auth.controller';
 import { adminRoleAuth } from '../middleware/bearAuth';
 
 export const authRouter = new Hono();
@@ -27,11 +27,11 @@ authRouter.post('login', zValidator('json', loginSchema, (result, c) => {
 }), loginController);
 
 
-// authRouter.post('update-password', zValidator('json', updatePassSchema, (result, c) => {
-//     if (!result.success) {
-//         return c.json(result.error, 400)
-//     }
+authRouter.put('update-password', zValidator('json', updatePassSchema, (result, c) => {
+    if (!result.success) {
+        return c.json(result.error, 400)
+    }
 
-// }),
-//     updatepasswordController
-// );
+}),
+    updatepasswordController
+);

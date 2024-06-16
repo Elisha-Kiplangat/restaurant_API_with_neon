@@ -43,7 +43,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6
 ###--- admin
 # GET https://restaurant-mngt.azurewebsites.net/users
 GET http://localhost:8000/users
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODUzODI0OX0.jHqxDPaWLE6tNtooaWhO8fpR2AnElAGmUQb0IgaA02s
 
 ###------------------------ rate limiter------
 GET http://localhost:8000/users?limit=2
@@ -72,7 +72,7 @@ POST http://localhost:8000/login
 Content-Type: application/json
 
 {
-    "email": "jane@gmail.com",
+    "email": "example@gmail.com",
     "password": "password"
 }
 
@@ -85,14 +85,14 @@ Content-Type: application/json
     "password": "passkey"
 }
 
-# ### ------------update password-----------------#
-# PUT http://localhost:8000/update-password
-# Content-Type: application/json
+### ------------update password-----------------#
+PUT http://localhost:8000/update-password
+Content-Type: application/json
 
-# {
-#     "email": "example@gmail.com",
-#     "password": "password"
-# }
+{
+    "email": "example@gmail.com",
+    "password": "password"
+}
 
 ###
 PUT http://localhost:8000/users/11

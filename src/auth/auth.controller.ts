@@ -1,6 +1,6 @@
 import { Context } from 'hono';
 import 'dotenv/config';
-import { registerService, loginService } from './auth.service';
+import { registerService, loginService, updatepasswordService } from './auth.service';
 
 import bcrypt from 'bcrypt';
 import { sign } from 'hono/jwt';
@@ -51,16 +51,16 @@ export const loginController = async (c: Context) => {
 
     }
 
-// export const updatepasswordController = async (c: Context) => {
-//     try {
-//         const { email, password } = await c.req.json();
-//         const hashedPass = await bcrypt.hash(password, 10);
-//         const message = await updatepasswordService(email, hashedPass);
-//         return c.json({ msg: message }, 200);
-//     } catch (error: any) {
-//         if (error.message === "User not found") {
-//             return c.json({ error: "User not found" }, 404);
-//         }
-//         return c.json({ error: error?.message || "An error occurred" }, 400);
-//     }
-// }
+export const updatepasswordController = async (c: Context) => {
+    try {
+        const { email, password } = await c.req.json();
+        const hashedPass = await bcrypt.hash(password, 10);
+        const message = await updatepasswordService(email, hashedPass);
+        return c.json({ msg: message }, 200);
+    } catch (error: any) {
+        if (error.message === "User not found") {
+            return c.json({ error: "User not found" }, 404);
+        }
+        return c.json({ error: error?.message || "An error occurred" }, 400);
+    }
+}
