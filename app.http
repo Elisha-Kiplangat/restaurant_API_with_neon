@@ -45,6 +45,10 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6
 GET http://localhost:8000/users
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODQwNTY1MH0.45ZZfgHAzBFi0B6EAbNYsJUE16xJfaZ60-xRmPZJ_Hs
 
+###------------------------ rate limiter------
+GET http://localhost:8000/users?limit=2
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODUzNzI2MH0.9DvW3gKsTL0TiUBAoS4qs4MTSS6FejK2jG-J_-7g5xY
+
 ###--- user invalid token
 GET https://restaurant-mngt.azurewebsites.net/users
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MTgyMDMwODd9.DiokaSe5S_G_luHpOiHnaiS9hVUZu4tol3_WVySTxjc

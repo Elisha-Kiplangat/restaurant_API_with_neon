@@ -3,8 +3,12 @@ import { userService, oneUserService, addUserService, userDetailService, updateU
 
 export const userController = async (c: Context) => {
     try{
-        const users = await userService();
-        return c.json(users);
+        const limit = Number(c.req.query('limit'));
+        const users = await userService(limit);
+        if (users == null || users.length == 0) {
+            return c.text("No users found", 404);
+        }
+        return c.json(users, 200);
     } catch (err: any) {
         console.error(err)
         return c.json({error: 'Internal Server Error'}, 500)

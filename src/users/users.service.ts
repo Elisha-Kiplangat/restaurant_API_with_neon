@@ -4,11 +4,17 @@ import { userselect, userInsert, userTable, UserDetailResult } from "../drizzle/
 import { eq } from "drizzle-orm";
 
 // all users
-export const userService = async (): Promise<userselect[]> => {
+export const userService = async (limit?: number): Promise<userselect[]> => {
     try {
-        const users = await db.query.userTable.findMany();
-        console.log('Users fetched:', users);
-        return users;
+        if (limit) {
+            const users = await db.query.userTable.findMany({
+                limit: limit
+            });
+            return users;
+            
+        }
+        return await db.query.userTable.findMany();
+
     } catch (error) {
         console.error('Error fetching restaurants:', error);
         throw error;
