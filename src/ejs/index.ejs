@@ -47,13 +47,15 @@
             <h1>Welcome to Our Service!</h1>
         </div>
         <div class="content">
-            <h2>Hello, <%= user.firstName %>!</h2>
+            <h2>Hello, <%= user.firstName %></h2>
             <p>Thank you for registering with us. We are excited to have you on board.</p>
             <p>Your account has been successfully created. Here are your details:</p>
             <ul>
-                <li><strong>Name:</strong>
-                    <%= user.firstName %>
-                </li>
+                <% if (user.firstName) { %>
+                    <li><strong>Name:</strong>
+                        <%= user.firstName %>
+                    </li>
+                    <% } %>
                 <li><strong>Email:</strong>
                     <%= user.email %>
                 </li>

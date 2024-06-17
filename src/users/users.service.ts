@@ -2,7 +2,7 @@ import { stat } from "fs";
 import db from "../drizzle/db"
 import { userselect, userInsert, userTable, UserDetailResult } from "../drizzle/schema"
 import { eq } from "drizzle-orm";
-import  mailFunction  from "../mail";
+import  mailFunction  from "../mail/register";
 
 // all users
 export const userService = async (limit?: number): Promise<userselect[]> => {
