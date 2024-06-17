@@ -64,3 +64,74 @@ export const updatepasswordController = async (c: Context) => {
         return c.json({ error: error?.message || "An error occurred" }, 400);
     }
 }
+
+import { AuthTable } from '../drizzle/schema';
+import db from '../drizzle/db';
+import { sql } from 'drizzle-orm';
+import mailFunction from '../mail/reset';
+import jwt from 'jsonwebtoken';
+// import { generateResetToken } from './auth.service'; // Moved token generation to a service
+
+export const generateResetToken = async (user: any): Promise<string> => {
+    const payload = {
+        email: user.email
+    };
+    const secret = process.env.JWT_SECRET as string;
+    const expiresIn = process.env.JWT_EXPIRESIN;
+    const token = jwt.sign(payload, secret, { expiresIn: expiresIn });
+    return token;
+};
+
+export const verifyResetToken = (token: string): string | object => {
+    const secret = process.env.JWT_SECRET as string;
+    try {
+        return jwt.verify(token, secret);
+    } catch (err) {
+        throw new Error('Invalid or expired token');
+    }
+};
+
+export const requestPasswordResetController = async (c: Context) => {
+    try {
+        const { email } = await c.req.json();
+
+        // Get user info
+        const user = await db.select().from(AuthTable).where(sql`${AuthTable.email} = ${email}`).limit(1);
+
+        if (user.length === 0) {
+            return c.json({ error: "User not found" }, 404);
+        }
+
+        // Generate reset token
+        const token = await generateResetToken(user[0]); // Pass the user object
+
+        const userName = user[0].email; // Adjust based on your actual user table structure
+
+        // Prepare data for the email template
+        const resetLink = `https://restaurant-mngt.azurewebsites.net/reset-password?token=${token}`;
+        const data = { email, resetLink, appName: 'Restaurant' };
+
+        // Send reset password email
+        await mailFunction(email, 'Password Reset Request', data); // Pass data to the mail function
+
+        return c.json({ msg: 'Password reset email sent successfully' }, 200);
+    } catch (error: any) {
+        return c.json({ error: error?.message || "An error occurred" }, 400);
+    }
+};
+
+export const resetPasswordController = async (c: Context) => {
+    try {
+        const { token, newPassword } = await c.req.json();
+
+        const decoded = verifyResetToken(token);
+        const email = (decoded as any).email;
+
+        // Update the user's password in the database
+        await db.update(AuthTable).set({ password: newPassword }).where(sql`${AuthTable.email} = ${email}`);
+
+        return c.json({ msg: 'Password reset successful' }, 200);
+    } catch (error: any) {
+        return c.json({ error: error?.message || "An error occurred" }, 400);
+    }
+};

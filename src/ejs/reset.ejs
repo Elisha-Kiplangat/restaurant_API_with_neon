@@ -59,10 +59,10 @@
             <h1>Password Reset Request</h1>
         </div>
         <div class="content">
-            <h2>Hi <%= userName %>,</h2>
+            <h2>Hi <%= user.email %>,</h2>
             <p>We received a request to reset your password. Click the button below to update your password:</p>
             <p style="text-align: center;">
-                <a href="<%= resetLink %>" class="button">Reset Password</a>
+                <a href="<%= user.resetLink %>" class="button">Reset Password</a>
             </p>
             <p>If you didn't request a password reset, you can ignore this email. Your password will remain unchanged.
             </p>
@@ -71,8 +71,8 @@
         <div class="footer">
             <p>If you're having trouble clicking the "Reset Password" button, copy and paste the URL below into your web
                 browser:</p>
-            <p><a href="<%= resetLink %>">
-                    <%= resetLink %>
+            <p><a href="<%= user.resetLink %>">
+                    <%= user.resetLink %>
                 </a></p>
             <p>&copy; 2024 Grill. All rights reserved.</p>
             <p><a href="[unsubscribe_link]">Unsubscribe</a> | <a href="[privacy_policy_link]">Privacy Policy</a></p>

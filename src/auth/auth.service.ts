@@ -1,7 +1,7 @@
 import { authselect, authInsert, AuthTable, authlogin } from '../drizzle/schema';
 import db from '../drizzle/db';
 import { sql } from 'drizzle-orm';
-import mailFunction from '../mail'
+import mailFunction from '../mail/register'
 
 
 
@@ -31,3 +31,11 @@ export const updatepasswordService = async (email: string, password: string): Pr
     
     return "Password Updated Successfully";
 }
+
+// import { sign } from 'jsonwebtoken'; // Assuming you're using jsonwebtoken for signing tokens
+
+// export const updatePasswordService = async (email: string, password: string): Promise<string> => {
+//     await db.update(AuthTable).set({ password }).where(sql`${AuthTable.email} = ${email}`);
+
+//     return "Password Updated Successfully";
+// };

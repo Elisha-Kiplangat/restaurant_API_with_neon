@@ -1,7 +1,7 @@
 import { Hono } from 'hono';
 import { zValidator } from '@hono/zod-validator';
 import { registerSchema, loginSchema, updatePassSchema } from '../validator';
-import { registerController, loginController, updatepasswordController } from './auth.controller';
+import { registerController, loginController, updatepasswordController, requestPasswordResetController, resetPasswordController } from './auth.controller';
 import { adminRoleAuth } from '../middleware/bearAuth';
 
 export const authRouter = new Hono();
@@ -35,3 +35,18 @@ authRouter.put('update-password', zValidator('json', updatePassSchema, (result, 
 }),
     updatepasswordController
 );
+
+
+authRouter.post('request-password-reset', requestPasswordResetController);
+authRouter.post('reset-password', resetPasswordController);
+
+import { renderFile } from 'ejs';
+import path from 'path';
+
+authRouter.get('reset-password', async (c) => {
+    const token = c.req.query('token');
+    const filePath = path.join(__dirname, '../ejs', 'form.ejs');
+    const html = await renderFile(filePath, { token });
+    c.header('Content-Type', 'text/html');
+    c.body(html);
+});
