@@ -9,7 +9,7 @@ const bearAuth_1 = require("../middleware/bearAuth");
 exports.userRouter = new hono_1.Hono();
 exports.userRouter.get('/users', bearAuth_1.adminRoleAuth, users_controller_1.userController);
 //one user
-exports.userRouter.get("/users/:id", bearAuth_1.userRoleAuth, users_controller_1.oneUserController);
+exports.userRouter.get("/users/:id", bearAuth_1.allRoleAuth, users_controller_1.oneUserController);
 //add user
 exports.userRouter.post("users", (0, zod_validator_1.zValidator)('json', validator_1.userSchema, (result, c) => {
     if (!result.success) {
@@ -17,6 +17,7 @@ exports.userRouter.post("users", (0, zod_validator_1.zValidator)('json', validat
     }
 }), users_controller_1.addUserController);
 //update a user
-exports.userRouter.put("/users/:id", users_controller_1.updateUserController);
-exports.userRouter.delete("/users/:id", bearAuth_1.adminRoleAuth, users_controller_1.deleteUserController);
+exports.userRouter.put("/users/:id", bearAuth_1.adminRoleAuth, users_controller_1.updateUserController);
+exports.userRouter.delete("/delete/:id", bearAuth_1.adminRoleAuth, users_controller_1.deleteUserController);
+exports.userRouter.get("/user-details/:id", bearAuth_1.adminRoleAuth, users_controller_1.userDetailController);
 exports.default = exports.userRouter;

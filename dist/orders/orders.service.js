@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteOrderService = exports.updateOrderService = exports.addOrderService = exports.oneOrderService = exports.orderService = void 0;
+exports.orderWithOrderMenuItemService = exports.deleteOrderService = exports.updateOrderService = exports.addOrderService = exports.oneOrderService = exports.orderService = void 0;
 const db_1 = __importDefault(require("../drizzle/db"));
 const schema_1 = require("../drizzle/schema");
 const drizzle_orm_1 = require("drizzle-orm");
@@ -54,3 +54,47 @@ const deleteOrderService = async (id) => {
     return "order deleted successfully";
 };
 exports.deleteOrderService = deleteOrderService;
+// order with order menu item
+// export const orderWithOrderMenuItemService = async (id: number) => {
+//     return await db.query.orderTable.findMany({
+//         with: {
+//             orderMenuItem: {
+//                 columns: {
+//                     quantity: true
+//                 }
+//             }
+//         },
+//         where: eq(orderTable.id, id)
+//     });
+// };
+// service.ts
+const orderWithOrderMenuItemService = async (id) => {
+    try {
+        return await db_1.default.query.orderTable.findMany({
+            columns: {
+                id: true,
+                actualDeliveryTime: true,
+                price: true
+            },
+            with: {
+                order: {
+                    columns: {
+                        quantity: true
+                    }
+                },
+                address: {
+                    columns: {
+                        streetAddress1: true,
+                        deliveryInstructions: true
+                    }
+                }
+            },
+            where: (0, drizzle_orm_1.eq)(schema_1.orderTable.id, id)
+        });
+    }
+    catch (error) {
+        console.error('Database query failed:', error); // Detailed error logging
+        throw new Error(`Database query failed`);
+    }
+};
+exports.orderWithOrderMenuItemService = orderWithOrderMenuItemService;

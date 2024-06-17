@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteDriverService = exports.updateDriverService = exports.addDriverService = exports.oneDriverService = exports.driverService = void 0;
+exports.driverWithAddressService = exports.deleteDriverService = exports.updateDriverService = exports.addDriverService = exports.oneDriverService = exports.driverService = void 0;
 const db_1 = __importDefault(require("../drizzle/db"));
 const schema_1 = require("../drizzle/schema");
 const drizzle_orm_1 = require("drizzle-orm");
@@ -49,3 +49,17 @@ const deleteDriverService = async (id) => {
     return "driver deleted successfully";
 };
 exports.deleteDriverService = deleteDriverService;
+// display driver with address
+const driverWithAddressService = async (id) => {
+    return await db_1.default.query.driverTable.findMany({
+        with: {
+            order: {
+                columns: {
+                    actualDeliveryTime: true,
+                }
+            }
+        },
+        where: (0, drizzle_orm_1.eq)(schema_1.driverTable.id, id)
+    });
+};
+exports.driverWithAddressService = driverWithAddressService;

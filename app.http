@@ -66,8 +66,8 @@ Content-Type: application/json
 
 ### ----------------------- role admin Login -----------------------------#
 ###
-##POST https://restaurant-mngt.azurewebsites.net/login
-POST http://localhost:8000/login
+POST https://restaurant-mngt.azurewebsites.net/login
+# POST http://localhost:8000/login
 Content-Type: application/json
 
 {
@@ -86,14 +86,16 @@ Content-Type: application/json
 
 ### ------------update password-with reset mail link----------------#
 POST http://localhost:8000/request-password-reset
+# POST https://restaurant-mngt.azurewebsites.net/request-password-reset
 Content-Type: application/json
 
 {
-    "email": "elishakronoh@gmail.com"
+    "email": "ezra4998@gmail.com"
 }
 
 ###
-POST http://localhost:8000/users
+# POST http://localhost:8000/users
+POST https://restaurant-mngt.azurewebsites.net/users
 Content-Type: application/json
 
 {
@@ -102,7 +104,7 @@ Content-Type: application/json
     "firstName": "Ezra",
     "lastName": "Ney",
     "phone": "+25477361254",
-    "created_at": "2024-06-17",
+    "created_at": "2024-06-16",
     "updated_at": "2024-06-17"
 }
 ###

@@ -1,11 +1,19 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteUserController = exports.updateUserController = exports.addUserController = exports.oneUserController = exports.userController = void 0;
+exports.userDetailController = exports.deleteUserController = exports.updateUserController = exports.addUserController = exports.oneUserController = exports.userController = void 0;
 const users_service_1 = require("./users.service");
+const bcrypt_1 = __importDefault(require("bcrypt"));
 const userController = async (c) => {
     try {
-        const users = await (0, users_service_1.userService)();
-        return c.json(users);
+        const limit = Number(c.req.query('limit'));
+        const users = await (0, users_service_1.userService)(limit);
+        if (users == null || users.length == 0) {
+            return c.text("No users found", 404);
+        }
+        return c.json(users, 200);
     }
     catch (err) {
         console.error(err);
@@ -29,6 +37,9 @@ exports.oneUserController = oneUserController;
 const addUserController = async (c) => {
     try {
         const user = await c.req.json();
+        const pass = user.password;
+        const hashedPass = await bcrypt_1.default.hash(pass, 10);
+        user.password = hashedPass;
         const createdUser = await (0, users_service_1.addUserService)(user);
         if (!createdUser)
             return c.text("User not created", 404);
@@ -81,3 +92,21 @@ const deleteUserController = async (c) => {
     }
 };
 exports.deleteUserController = deleteUserController;
+//
+const userDetailController = async (c) => {
+    const id = parseInt(c.req.param("id"));
+    if (isNaN(id))
+        return c.text("Invalid ID", 400);
+    try {
+        const userDetails = await (0, users_service_1.userDetailService)(id);
+        if (!userDetails || userDetails.length === 0) {
+            return c.text("User not found", 404);
+        }
+        return c.json(userDetails, 200);
+    }
+    catch (error) {
+        console.error(error);
+        return c.text("Internal Server Error", 500);
+    }
+};
+exports.userDetailController = userDetailController;

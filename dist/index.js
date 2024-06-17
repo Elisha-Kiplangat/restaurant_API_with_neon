@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const node_server_1 = require("@hono/node-server");
 const hono_1 = require("hono");
 require("dotenv/config");
+const fs_1 = require("fs");
 const restaurant_router_1 = require("./restaurant/restaurant.router");
 const users_router_1 = require("./users/users.router");
 const orders_router_1 = require("./orders/orders.router");
@@ -19,9 +20,9 @@ const restaurantOwner_router_1 = require("./restaurantOwner/restaurantOwner.rout
 const orderStatus_router_1 = require("./orderStatus/orderStatus.router");
 const auth_router_1 = require("./auth/auth.router");
 const app = new hono_1.Hono();
-app.get('/', (c) => {
-    return c.text('Hello Hono!');
-});
+// app.get('/', (c) => {
+//   return c.text('Hello Hono!')
+// })
 app.route('/', restaurant_router_1.restaurantRouter);
 app.route('/', users_router_1.userRouter);
 app.route('/', auth_router_1.authRouter);
@@ -37,6 +38,15 @@ app.route('/', statusCatalog_router_1.statusCatalogRouter);
 app.route('/', driver_router_1.driverRouter);
 app.route('/', restaurantOwner_router_1.restaurantOwnerRouter);
 app.route('/', orderStatus_router_1.orderStatusRouter);
+app.get('/', async (c) => {
+    try {
+        let html = (0, fs_1.readFileSync)('./index.html', 'utf-8');
+        return c.html(html);
+    }
+    catch (error) {
+        return c.json({ error: error.message, status: 500 });
+    }
+});
 (0, node_server_1.serve)({
     fetch: app.fetch,
     port: parseInt(process.env.PORT || '3000')

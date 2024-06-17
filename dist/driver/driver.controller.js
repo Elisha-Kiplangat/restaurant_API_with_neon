@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteDriverController = exports.updateDriverController = exports.addDriverController = exports.oneDriverController = exports.driverController = void 0;
+exports.driverWithAddressController = exports.deleteDriverController = exports.updateDriverController = exports.addDriverController = exports.oneDriverController = exports.driverController = void 0;
 const driver_service_1 = require("./driver.service");
 const driverController = async (c) => {
     try {
@@ -76,3 +76,18 @@ const deleteDriverController = async (c) => {
     }
 };
 exports.deleteDriverController = deleteDriverController;
+const driverWithAddressController = async (c) => {
+    const id = parseInt(c.req.param("id"));
+    if (isNaN(id))
+        return c.text("Invalid ID", 400);
+    try {
+        const driver = await (0, driver_service_1.driverWithAddressService)(id);
+        if (driver == undefined)
+            return c.text("driver not found", 404);
+        return c.json(driver, 200);
+    }
+    catch (error) {
+        return c.json({ error: error?.message }, 400);
+    }
+};
+exports.driverWithAddressController = driverWithAddressController;

@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteStateService = exports.updateStateService = exports.addStateService = exports.oneStateService = exports.stateService = void 0;
+exports.stateDetailService = exports.deleteStateService = exports.updateStateService = exports.addStateService = exports.oneStateService = exports.stateService = void 0;
 const db_1 = __importDefault(require("../drizzle/db"));
 const schema_1 = require("../drizzle/schema");
 const drizzle_orm_1 = require("drizzle-orm");
@@ -52,3 +52,13 @@ const deleteStateService = async (id) => {
     return "State deleted successfully";
 };
 exports.deleteStateService = deleteStateService;
+// get state details from state table with the city
+const stateDetailService = async (id) => {
+    return await db_1.default.query.stateTable.findMany({
+        with: {
+            city: true
+        },
+        where: (0, drizzle_orm_1.eq)(schema_1.stateTable.id, id)
+    });
+};
+exports.stateDetailService = stateDetailService;

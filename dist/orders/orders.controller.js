@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteOrderController = exports.updateOrderController = exports.addOrderController = exports.oneOrderController = exports.ordersController = void 0;
+exports.orderWithOrderMenuItemController = exports.deleteOrderController = exports.updateOrderController = exports.addOrderController = exports.oneOrderController = exports.ordersController = void 0;
 const orders_service_1 = require("./orders.service");
 const ordersController = async (c) => {
     try {
@@ -75,3 +75,31 @@ const deleteOrderController = async (c) => {
     }
 };
 exports.deleteOrderController = deleteOrderController;
+// export const orderWithOrderMenuItemController = async (c: Context) => {
+//     const id = parseInt(c.req.param("id"));
+//     if (isNaN(id)) return c.text("Invalid ID", 400);
+//     try {
+//         const order = await orderWithOrderMenuItemService(id);
+//         if (order == undefined) return c.text("order not found", 404);
+//         return c.json(order, 200);
+//     } catch (error: any) {
+//         return c.json({ error: error?.message }, 400)
+//     }
+// }
+// controller.ts
+const orderWithOrderMenuItemController = async (c) => {
+    const id = parseInt(c.req.param("id"));
+    if (isNaN(id))
+        return c.text("Invalid ID", 400);
+    try {
+        const order = await (0, orders_service_1.orderWithOrderMenuItemService)(id);
+        if (!order || order.length === 0)
+            return c.text("Order not found", 404);
+        return c.json(order, 200);
+    }
+    catch (error) {
+        console.error('Failed to fetch order:', error); // Detailed error logging
+        return c.json({ error: error.message }, 400);
+    }
+};
+exports.orderWithOrderMenuItemController = orderWithOrderMenuItemController;

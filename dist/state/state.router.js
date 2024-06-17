@@ -15,4 +15,5 @@ exports.stateRouter.post("states", (0, zod_validator_1.zValidator)('json', valid
 }), state_controller_1.addState);
 exports.stateRouter.put("/states/:id", state_controller_1.updateStateController);
 exports.stateRouter.delete("/states/:id", state_controller_1.deleteStateController);
+exports.stateRouter.get("/states-details/:id", state_controller_1.stateDetailController);
 exports.default = exports.stateRouter;

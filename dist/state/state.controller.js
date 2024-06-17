@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteStateController = exports.updateStateController = exports.addState = exports.oneStateController = exports.stateController = void 0;
+exports.stateDetailController = exports.deleteStateController = exports.updateStateController = exports.addState = exports.oneStateController = exports.stateController = void 0;
 const state_service_1 = require("./state.service");
 const stateController = async (c) => {
     try {
@@ -78,3 +78,21 @@ const deleteStateController = async (c) => {
     }
 };
 exports.deleteStateController = deleteStateController;
+// 
+const stateDetailController = async (c) => {
+    const id = parseInt(c.req.param("id"));
+    if (isNaN(id))
+        return c.text("Invalid ID", 400);
+    try {
+        const stateDetails = await (0, state_service_1.stateDetailService)(id);
+        if (!stateDetails || stateDetails.length === 0) {
+            return c.text("State not found", 404);
+        }
+        return c.json(stateDetails, 200);
+    }
+    catch (error) {
+        console.error(error);
+        return c.text("Internal Server Error", 500);
+    }
+};
+exports.stateDetailController = stateDetailController;

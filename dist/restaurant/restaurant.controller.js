@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteRestaurantController = exports.updateRestaurantController = exports.addRestaurantController = exports.oneRestaurantController = exports.restaurantController = void 0;
+exports.restaurantWithOwnerController = exports.deleteRestaurantController = exports.updateRestaurantController = exports.addRestaurantController = exports.oneRestaurantController = exports.restaurantController = void 0;
 const restaurant_service_1 = require("./restaurant.service");
 const restaurantController = async (c) => {
     try {
@@ -75,3 +75,20 @@ const deleteRestaurantController = async (c) => {
     }
 };
 exports.deleteRestaurantController = deleteRestaurantController;
+const restaurantWithOwnerController = async (c) => {
+    const id = parseInt(c.req.param("id"));
+    if (isNaN(id))
+        return c.text("Invalid ID", 400);
+    try {
+        const restaurant = await (0, restaurant_service_1.restaurantWithOwnerService)(id);
+        if (!restaurant || restaurant.length === 0) {
+            return c.text("User not found", 404);
+        }
+        return c.json(restaurant, 200);
+    }
+    catch (error) {
+        console.error(error);
+        return c.text("Internal Server Error!!", 500);
+    }
+};
+exports.restaurantWithOwnerController = restaurantWithOwnerController;

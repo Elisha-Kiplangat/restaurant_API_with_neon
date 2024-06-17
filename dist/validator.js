@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.registerSchema = exports.loginSchema = exports.orderStatusSchema = exports.restaurantOwnerSchema = exports.driverSchema = exports.statusCatalogSchema = exports.orderMenuItemSchema = exports.citySchema = exports.categorySchema = exports.menuItemSchema = exports.orderSchema = exports.restaurantSchema = exports.addressSchema = exports.commentSchema = exports.stateSchema = exports.userSchema = void 0;
+exports.updatePassSchema = exports.registerSchema = exports.loginSchema = exports.orderStatusSchema = exports.restaurantOwnerSchema = exports.driverSchema = exports.statusCatalogSchema = exports.orderMenuItemSchema = exports.citySchema = exports.categorySchema = exports.menuItemSchema = exports.orderSchema = exports.restaurantSchema = exports.addressSchema = exports.commentSchema = exports.stateSchema = exports.userSchema = void 0;
 const zod_1 = require("zod");
 exports.userSchema = zod_1.z.object({
     email: zod_1.z.string(),
@@ -8,11 +8,11 @@ exports.userSchema = zod_1.z.object({
     firstName: zod_1.z.string(),
     lastName: zod_1.z.string(),
     phone: zod_1.z.string(),
-    createdAt: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for createdAt',
+    created_at: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for created_at',
     }).transform((val) => new Date(val)),
-    updatedAt: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for updatedAt',
+    updated_at: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for updated_at',
     }).transform((val) => new Date(val))
 });
 exports.stateSchema = zod_1.z.object({
@@ -25,11 +25,11 @@ exports.commentSchema = zod_1.z.object({
     commentText: zod_1.z.string(),
     isComplaint: zod_1.z.boolean(),
     isPraise: zod_1.z.boolean(),
-    createdAt: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for createdAt',
+    created_at: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for created_at',
     }).transform((val) => new Date(val)),
-    updatedAt: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for updatedAt',
+    updated_at: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for updated_at',
     }).transform((val) => new Date(val))
 });
 exports.addressSchema = zod_1.z.object({
@@ -39,11 +39,11 @@ exports.addressSchema = zod_1.z.object({
     deliveryInstructions: zod_1.z.string(),
     userId: zod_1.z.number(),
     cityId: zod_1.z.number(),
-    createdAt: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for createdAt',
+    created_at: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for created_at',
     }).transform((val) => new Date(val)),
-    updatedAt: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for updatedAt',
+    updated_at: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for updated_at',
     }).transform((val) => new Date(val))
 });
 exports.restaurantSchema = zod_1.z.object({
@@ -51,11 +51,11 @@ exports.restaurantSchema = zod_1.z.object({
     address: zod_1.z.string(),
     zip: zod_1.z.number(),
     cityId: zod_1.z.number(),
-    createdAt: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for createdAt',
+    created_at: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for created_at',
     }).transform((val) => new Date(val)),
-    updatedAt: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for updatedAt',
+    updated_at: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for updated_at',
     }).transform((val) => new Date(val))
 });
 exports.orderSchema = zod_1.z.object({
@@ -73,11 +73,11 @@ exports.orderSchema = zod_1.z.object({
     discount: zod_1.z.number(),
     finalPrice: zod_1.z.number(),
     comment: zod_1.z.string(),
-    createdAt: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for createdAt',
+    created_at: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for created_at',
     }).transform((val) => new Date(val)),
-    updatedAt: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for updatedAt',
+    updated_at: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for updated_at',
     }).transform((val) => new Date(val))
 });
 exports.menuItemSchema = zod_1.z.object({
@@ -88,11 +88,11 @@ exports.menuItemSchema = zod_1.z.object({
     ingredients: zod_1.z.string(),
     price: zod_1.z.number(),
     active: zod_1.z.boolean(),
-    createdAt: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for createdAt',
+    created_at: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for created_at',
     }).transform((val) => new Date(val)),
-    updatedAt: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for updatedAt',
+    updated_at: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for updated_at',
     }).transform((val) => new Date(val))
 });
 exports.categorySchema = zod_1.z.object({
@@ -120,11 +120,11 @@ exports.driverSchema = zod_1.z.object({
     userId: zod_1.z.number(),
     online: zod_1.z.boolean(),
     delivering: zod_1.z.boolean(),
-    createdAt: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for createdAt',
+    created_at: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for created_at',
     }).transform((val) => new Date(val)),
-    updatedAt: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for updatedAt',
+    updated_at: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for updated_at',
     }).transform((val) => new Date(val))
 });
 exports.restaurantOwnerSchema = zod_1.z.object({
@@ -134,8 +134,8 @@ exports.restaurantOwnerSchema = zod_1.z.object({
 exports.orderStatusSchema = zod_1.z.object({
     orderId: zod_1.z.number(),
     statusCatalogId: zod_1.z.number(),
-    createdAt: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for createdAt',
+    created_at: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
+        message: 'Invalid date format for created_at',
     }).transform((val) => new Date(val))
 });
 //login schema
@@ -147,14 +147,9 @@ exports.loginSchema = zod_1.z.object({
 exports.registerSchema = zod_1.z.object({
     email: zod_1.z.string(),
     password: zod_1.z.string(),
-    firstName: zod_1.z.string(),
-    lastName: zod_1.z.string(),
-    phone: zod_1.z.string(),
-    createdAt: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for createdAt',
-    }).transform((val) => new Date(val)),
-    updatedAt: zod_1.z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: 'Invalid date format for updatedAt',
-    }).transform((val) => new Date(val)),
     role: zod_1.z.string().optional()
+});
+exports.updatePassSchema = zod_1.z.object({
+    email: zod_1.z.string().email(),
+    password: zod_1.z.string()
 });

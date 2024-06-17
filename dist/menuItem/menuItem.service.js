@@ -49,3 +49,4 @@ const deleteMenuItemService = async (id) => {
     return "menuItem deleted successfully";
 };
 exports.deleteMenuItemService = deleteMenuItemService;
+// both menu item and order menu item

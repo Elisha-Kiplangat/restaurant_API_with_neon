@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteRestaurantService = exports.updateRestaurantService = exports.addRestaurantService = exports.oneRestaurantService = exports.restaurantService = void 0;
+exports.restaurantWithOwnerService = exports.deleteRestaurantService = exports.updateRestaurantService = exports.addRestaurantService = exports.oneRestaurantService = exports.restaurantService = void 0;
 const db_1 = __importDefault(require("../drizzle/db"));
 const schema_1 = require("../drizzle/schema");
 const drizzle_orm_1 = require("drizzle-orm");
@@ -55,3 +55,13 @@ const deleteRestaurantService = async (id) => {
     return "Restaurant deleted successfully";
 };
 exports.deleteRestaurantService = deleteRestaurantService;
+//restaurant with restaurant owner
+const restaurantWithOwnerService = async (id) => {
+    return await db_1.default.query.restaurantTable.findMany({
+        with: {
+            address: true
+        },
+        where: (0, drizzle_orm_1.eq)(schema_1.restaurantTable.id, id)
+    });
+};
+exports.restaurantWithOwnerService = restaurantWithOwnerService;
