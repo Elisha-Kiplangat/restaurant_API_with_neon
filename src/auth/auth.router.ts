@@ -45,7 +45,7 @@ import path from 'path';
 
 authRouter.get('reset-password', async (c) => {
     const token = c.req.query('token');
-    const filePath = path.join(__dirname, '../ejs', 'form.ejs');
+    const filePath = path.join(__dirname, '../../ejs', 'form.ejs');
     const html = await renderFile(filePath, { token });
     c.header('Content-Type', 'text/html');
     c.body(html);

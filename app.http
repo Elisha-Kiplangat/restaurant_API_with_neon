@@ -85,8 +85,8 @@ Content-Type: application/json
 }
 
 ### ------------update password-with reset mail link----------------#
-POST http://localhost:8000/request-password-reset
-# POST https://restaurant-mngt.azurewebsites.net/request-password-reset
+# POST http://localhost:8000/request-password-reset
+POST https://restaurant-mngt.azurewebsites.net/request-password-reset
 Content-Type: application/json
 
 {
