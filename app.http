@@ -49,7 +49,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNv
 GET http://localhost:8000/users?limit=2
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImV4cCI6MTcxODUzNzI2MH0.9DvW3gKsTL0TiUBAoS4qs4MTSS6FejK2jG-J_-7g5xY
 
-###--- user invalid token
+###--- 
 GET https://restaurant-mngt.azurewebsites.net/users
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqYW5lIiwicm9sZSI6InVzZXIiLCJleHAiOjE3MTgyMDMwODd9.DiokaSe5S_G_luHpOiHnaiS9hVUZu4tol3_WVySTxjc
 
@@ -92,6 +92,9 @@ Content-Type: application/json
 {
     "email": "ezra4998@gmail.com"
 }
+###
+GET http://localhost:8000/reset-password?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJKb2huIiwicm9sZSI6ImFkbWluIiwiZXhwIjoxNzE4Mjk1NjY1fQ.iMfw1eyQ8ehIkfoNG1WnkNRC-q_5dXnm584CE4C76aA
+
 
 ###
 # POST http://localhost:8000/users
