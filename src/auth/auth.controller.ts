@@ -5,6 +5,9 @@ import { registerService, loginService, updatepasswordService } from './auth.ser
 import bcrypt from 'bcrypt';
 import { sign } from 'hono/jwt';
 
+import { renderFile } from 'ejs';
+import path from 'path';
+
 
 export const registerController = async (c: Context) => {
     try {
@@ -70,7 +73,7 @@ import db from '../drizzle/db';
 import { sql } from 'drizzle-orm';
 import mailFunction from '../mail/reset';
 import jwt from 'jsonwebtoken';
-// import { generateResetToken } from './auth.service'; // Moved token generation to a service
+
 
 export const generateResetToken = async (user: any): Promise<string> => {
     const payload = {
@@ -133,5 +136,27 @@ export const resetPasswordController = async (c: Context) => {
         return c.json({ msg: 'Password reset successful' }, 200);
     } catch (error: any) {
         return c.json({ error: error?.message || "An error occurred" }, 400);
+    }
+};
+
+
+
+export const resetPasswordForm = async (c: Context) => {
+    try {
+        const token = c.req.query('token');
+        if (!token) {
+            c.status(400);
+            return c.text('Token is required');
+        }
+
+        const filePath = path.join(__dirname, '../../ejs', 'form.ejs');
+        const html = await renderFile(filePath, { token });
+
+        c.header('Content-Type', 'text/html');
+        return c.html(html);
+    } catch (error) {
+        console.error('Error rendering form:', error);
+        c.status(500);
+        return c.text('Internal Server Error');
     }
 };
